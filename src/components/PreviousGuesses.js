@@ -26,10 +26,12 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
                 className={styles.previousGuessP}
                 style={{ backgroundColor: `${guessRGB}`, color: `${getContrastColor(guessRGB)}`}}
             >
-                rgb({guess[0]}, {guess[1]}, {guess[2]}) ---{'>'} {hintOne} {hintTwo} {hintThree}
+                rgb({guess[0]}, {guess[1]}, {guess[2]}) → {hintOne} {hintTwo} {hintThree}
             </p>
         )
     })
+
+    
 
     return (
         <div className={styles.previousGuessesWrapperDiv}>

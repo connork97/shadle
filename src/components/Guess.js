@@ -3,7 +3,7 @@ import styles from './Guess.module.css';
 
 import React, { useState } from 'react';
 
-const Guess = ({ colorOfTheDay, previousUserGuesses, setPreviousUserGuesses }) => {
+const Guess = ({ colorOfTheDay, previousUserGuesses, setPreviousUserGuesses, openWinModal }) => {
 
     const [currentUserGuess, setCurrentUserGuess] = useState([0, 0, 0])
 
@@ -22,11 +22,12 @@ const Guess = ({ colorOfTheDay, previousUserGuesses, setPreviousUserGuesses }) =
         if (!JSON.stringify(previousUserGuesses).includes(JSON.stringify(currentUserGuess))) {
             if (JSON.stringify(currentUserGuess) === JSON.stringify(colorOfTheDay)) {
                 console.log("You got it!  The color of the day is: ", colorOfTheDay)
+                openWinModal()
             } else {
                 console.log("Sorry, try again.", currentUserGuess)
             };
             setPreviousUserGuesses((prevGuesses) => {
-                return [...prevGuesses, currentUserGuess]
+                return [currentUserGuess, ...prevGuesses]
             });
             setCurrentUserGuess([0, 0, 0]);
         } else {
