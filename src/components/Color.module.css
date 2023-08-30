@@ -1,0 +1,7 @@
+.mainColorDiv {
+    margin: 10vh auto;
+    height: 25vh;
+    width: 25vh;
+    /* background-color: rgb(1, 2, 3); */
+    border-radius: 25px;
+}
