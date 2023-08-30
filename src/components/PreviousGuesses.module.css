@@ -1,0 +1,13 @@
+.previousGuessesWrapperDiv {
+    margin: 2.5% auto;
+    width: 50vw;
+}
+
+.previousGuessP {
+    margin: 1% auto;
+    width: 50%;
+    border-radius: 25px;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    /* background-color: rgb(225, 225, 225); */
+}

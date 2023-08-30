@@ -3,14 +3,13 @@ import styles from './Guess.module.css';
 
 import React, { useState } from 'react';
 
-const Guess = ({ colorOfTheDay }) => {
+const Guess = ({ colorOfTheDay, previousUserGuesses, setPreviousUserGuesses }) => {
 
-    const [userGuess, setUserGuess] = useState([0, 0, 0])
-    console.log(userGuess)
+    const [currentUserGuess, setCurrentUserGuess] = useState([0, 0, 0])
+
     const handleUserGuessChange = (event, index) => {
         const { value } = event.target;
-        // console.log(name, value)
-        setUserGuess(prevGuess => {
+        setCurrentUserGuess(prevGuess => {
             const updatedGuess = [...prevGuess];
             updatedGuess[index] = parseInt(value);
             return updatedGuess;
@@ -18,13 +17,20 @@ const Guess = ({ colorOfTheDay }) => {
     };
 
     const handleGuessSubmit = (event) => {
-        // console.log(userGuess)
         event.preventDefault();
         console.log("Color of the day", colorOfTheDay);
-        if (userGuess[0] === colorOfTheDay[0] && userGuess[1] === colorOfTheDay[1] && userGuess[2] === colorOfTheDay[2]) {
-            console.log("You got it!  The color of the day is: ", colorOfTheDay)
+        if (!JSON.stringify(previousUserGuesses).includes(JSON.stringify(currentUserGuess))) {
+            if (JSON.stringify(currentUserGuess) === JSON.stringify(colorOfTheDay)) {
+                console.log("You got it!  The color of the day is: ", colorOfTheDay)
+            } else {
+                console.log("Sorry, try again.", currentUserGuess)
+            };
+            setPreviousUserGuesses((prevGuesses) => {
+                return [...prevGuesses, currentUserGuess]
+            });
+            setCurrentUserGuess([0, 0, 0]);
         } else {
-            console.log("Sorry, try again.", userGuess)
+            console.log("You already guessed that number!")
         }
     };
 
@@ -33,7 +39,7 @@ const Guess = ({ colorOfTheDay }) => {
             <form className={styles.guessForm} onSubmit={handleGuessSubmit}>
                 <input
                     type="number"
-                    value={userGuess[0]}
+                    value={currentUserGuess[0]}
                     min={0}
                     max={255}
                     onChange={(event) => handleUserGuessChange(event, 0)}
@@ -41,7 +47,7 @@ const Guess = ({ colorOfTheDay }) => {
                 </input>
                 <input
                     type="number"
-                    value={userGuess[1]}
+                    value={currentUserGuess[1]}
                     min={0}
                     max={255}
                     onChange={(event) => handleUserGuessChange(event, 1)}
@@ -49,7 +55,7 @@ const Guess = ({ colorOfTheDay }) => {
                 </input>
                 <input
                     type="number"
-                    value={userGuess[2]}
+                    value={currentUserGuess[2]}
                     min={0}
                     max={255}
                     onChange={(event) => handleUserGuessChange(event, 2)}

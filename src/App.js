@@ -5,10 +5,12 @@ import React, { useState, useEffect } from 'react';
 
 import Color from './components/Color';
 import Guess from './components/Guess';
+import PreviousGuesses from './components/PreviousGuesses';
 
 function App() {
 
   const [colorOfTheDay, setColorOfTheDay] = useState([0, 0, 0])
+  const [previousUserGuesses, setPreviousUserGuesses] = useState([])
     
   useEffect(() => {
       const firstNum = Math.floor(Math.random() * 256)
@@ -22,7 +24,15 @@ function App() {
       <h1>Welcome to Shadle!</h1>
       <h2>The RGB color guessing game!</h2>
       <Color colorOfTheDay={colorOfTheDay} />
-      <Guess colorOfTheDay={colorOfTheDay} />
+      <Guess 
+        colorOfTheDay={colorOfTheDay}
+        previousUserGuesses={previousUserGuesses}
+        setPreviousUserGuesses={setPreviousUserGuesses}
+      />
+      <PreviousGuesses
+        colorOfTheDay={colorOfTheDay}
+        previousUserGuesses={previousUserGuesses}
+      />
     </div>
   );
 }
