@@ -1,0 +1,14 @@
+.navbarWrapperDiv {
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    margin-bottom: 5rem;
+    width: 100vw;
+    height: 6rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.shadleH1 {
+    margin: auto;
+    text-align: center;
+    font-size: 4rem;
+}

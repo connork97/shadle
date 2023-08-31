@@ -6,11 +6,14 @@ import React, { useState, useEffect } from 'react';
 import Color from './components/Color';
 import Guess from './components/Guess';
 import PreviousGuesses from './components/PreviousGuesses';
-import WinModal from './components/WinModal';
+import GameOverModal from './components/GameOverModal';
 import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
+import Navbar from './components/Navbar';
 
 function App() {
+
+  const [gameResult, setGameResult] = useState(null);
 
   const [colorOfTheDay, setColorOfTheDay] = useState([0, 0, 0])
   const [rgbColorOfTheDay, setRgbColorOfTheDay] = useState(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
@@ -34,14 +37,14 @@ function App() {
       setColorOfTheDay([firstNum, secondNum, thirdNum])
   }, []);
 
-  const [winModalIsOpen, setWinModalIsOpen] = useState(false);
+  const [gameOverModalIsOpen, setGameOverModalIsOpen] = useState(false);
 
-  const openWinModal = () => {
-    setWinModalIsOpen(true);
+  const openGameOverModal = () => {
+    setGameOverModalIsOpen(true);
   };
 
-  const closeWinModal = () => {
-    setWinModalIsOpen(false);
+  const closeGameOverModal = () => {
+    setGameOverModalIsOpen(false);
   };
 
   const [instructionsModalIsOpen, setInstructionsModalIsOpen] = useState(true);
@@ -56,30 +59,31 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="shadleH1">Welcome to Shadle!</h1>
-      <h2 className="shadleH2">The RGB color guessing game!</h2>
-      <WinModal
-        colorOfTheDay={colorOfTheDay}
-        rgbColorOfTheDay={rgbColorOfTheDay}
-        opaqueRgbColorOfTheDay={opaqueRgbColorOfTheDay}
-        winModalIsOpen={winModalIsOpen} 
-        closeWinModal={closeWinModal}      
-      />
+      <Navbar />
       <InstructionsModal
         instructionsModalIsOpen={instructionsModalIsOpen}
         closeInstructionsModal={closeInstructionsModal}      
+      />
+      <GameOverModal
+        gameResult={gameResult}
+        colorOfTheDay={colorOfTheDay}
+        rgbColorOfTheDay={rgbColorOfTheDay}
+        opaqueRgbColorOfTheDay={opaqueRgbColorOfTheDay}
+        gameOverModalIsOpen={gameOverModalIsOpen} 
+        closeGameOverModal={closeGameOverModal}      
       />
       <Color
         colorOfTheDay={colorOfTheDay}
         rgbColorOfTheDay={rgbColorOfTheDay}
       />
       <div className='currentAndPastGuessWrapperDiv'>
-        <Guess 
+        <Guess
+          setGameResult={setGameResult}
           colorOfTheDay={colorOfTheDay}
           rgbColorOfTheDay={rgbColorOfTheDay}
           previousUserGuesses={previousUserGuesses}
           setPreviousUserGuesses={setPreviousUserGuesses}
-          openWinModal={openWinModal}
+          openGameOverModal={openGameOverModal}
         />
         <PreviousGuesses
           className='PreviousGuesses'

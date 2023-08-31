@@ -1,18 +1,12 @@
 .App {
+  margin: auto;
+  height: auto;
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-.shadleH1 {
-  font-size: 5rem;
-}
-
-.shadleH2 {
-  font-size: 2.5rem;
 }
 
 .currentAndPastGuessWrapperDiv {
@@ -25,14 +19,6 @@
 .previousGuesses {
   display: flex;
   align-items: flex-start;
-}
-
-.currentAndPastGuessWrapperDiv Guess {
-  /* width: 50%; */
-}
-
-.currentAndPastGuessWrapperDiv PreviousGuesses {
-  /* width: 50%; */
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

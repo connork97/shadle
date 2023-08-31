@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 
 import useGetContrastColor from '../utils/useGetContrastColor';
 
-const Guess = ({ colorOfTheDay, rgbColorOfTheDay, previousUserGuesses, setPreviousUserGuesses, openWinModal }) => {
+const Guess = ({ setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGuesses, setPreviousUserGuesses, openGameOverModal, openLoseModal }) => {
 
-    const [currentUserGuess, setCurrentUserGuess] = useState([0, 0, 0])
+    const [currentUserGuess, setCurrentUserGuess] = useState([0, 0, 0]);
 
     const handleUserGuessChange = (event, index) => {
         const { value } = event.target;
@@ -21,20 +21,34 @@ const Guess = ({ colorOfTheDay, rgbColorOfTheDay, previousUserGuesses, setPrevio
     const handleGuessSubmit = (event) => {
         event.preventDefault();
         console.log("Color of the day", colorOfTheDay);
-        if (!JSON.stringify(previousUserGuesses).includes(JSON.stringify(currentUserGuess))) {
+        if (!JSON.stringify(previousUserGuesses).includes(JSON.stringify(currentUserGuess)) && previousUserGuesses.length < 6) {
             if (JSON.stringify(currentUserGuess) === JSON.stringify(colorOfTheDay)) {
+                setPreviousUserGuesses((prevGuesses) => {
+                    return [currentUserGuess, ...prevGuesses]
+                });
+                setGameResult(true);
+                openGameOverModal();
                 console.log("You got it!  The color of the day is: ", colorOfTheDay)
-                openWinModal()
-            } else {
+                // openGameOverModal()
+            } else if (previousUserGuesses.length === 5) {
+                setPreviousUserGuesses((prevGuesses) => {
+                    return [currentUserGuess, ...prevGuesses]
+                });
+                setGameResult(false);
+                openGameOverModal();
+                // window.alert("Sorry, you lost.")
+            } 
+            else {
+                setPreviousUserGuesses((prevGuesses) => {
+                    return [currentUserGuess, ...prevGuesses]
+                });
                 console.log("Sorry, try again.", currentUserGuess)
             };
-            setPreviousUserGuesses((prevGuesses) => {
-                return [currentUserGuess, ...prevGuesses]
-            });
             document.body.style.backgroundColor = `rgba(${currentUserGuess[0]}, ${currentUserGuess[1]}, ${currentUserGuess[2]}, 0.25)`;
             // setCurrentUserGuess([0, 0, 0]);
         } else {
             console.log("You already guessed that number!")
+            window.alert("You already guessed that!  Try again.")
         }
     };
 

@@ -39,12 +39,22 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
     //     )
     // })
     const renderPreviousUserGuesses = [];
+    const remainingGuesses = Math.max(0, 6 - previousUserGuesses.length);
+    
+    if (remainingGuesses > 0) {
+        renderPreviousUserGuesses.push(
+            <p key={-1} className={styles.previousGuessP}>
+                You have {remainingGuesses} guesses left.
+            </p>
+        );
+    }
     
     for (let index = 0; index < 6; index++) {
         const guess = previousUserGuesses[index];
+    
         if (guess) {
             const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`;
-
+    
             let hintOne, hintTwo, hintThree;
             if (guess[0] < colorOfTheDay[0]) hintOne = <FaArrowDown className={styles.hintArrow} />
             else if (guess[0] === colorOfTheDay[0]) hintOne = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
@@ -67,7 +77,7 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
                     rgb({guess[0]}{hintOne}, {guess[1]}{hintTwo}, {guess[2]}{hintThree})
                 </p>
             );
-        } else {
+        } else if (renderPreviousUserGuesses.length < 6) {
             renderPreviousUserGuesses.push(
                 <p 
                     key={index}
