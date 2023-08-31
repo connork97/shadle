@@ -54,17 +54,42 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
     
         if (guess) {
             const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`;
-    
+
             let hintOne, hintTwo, hintThree;
-            if (guess[0] < colorOfTheDay[0]) hintOne = <FaArrowDown className={styles.hintArrow} />
-            else if (guess[0] === colorOfTheDay[0]) hintOne = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
-            else hintOne = <FaArrowUp className={styles.hintArrow} />
-            if (guess[1] < colorOfTheDay[1]) hintTwo = <FaArrowDown className={styles.hintArrow} />
-            else if (guess[1] === colorOfTheDay[1]) hintTwo = <ImCheckmark className={styles.checkmarkHint} />
-            else hintTwo = <FaArrowUp className={styles.hintArrow} />
-            if (guess[2] < colorOfTheDay[2]) hintThree = <FaArrowDown className={styles.hintArrow} />
-            else if (guess[2] === colorOfTheDay[2]) hintThree = <ImCheckmark className={styles.checkmarkHint} />
-            else hintThree = <FaArrowUp className={styles.hintArrow} />
+            if (guess[0] < colorOfTheDay[0]) {
+                if (guess[0] >= (colorOfTheDay[0] - 25)) hintOne = <FaArrowUp className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[0] >= (colorOfTheDay[0] - 50)) hintOne = <FaArrowUp className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[0] < (colorOfTheDay[0] - 50)) hintOne = <FaArrowUp className={styles.hintArrow} style={{background: 'red'}} />
+            } else if (guess[0] > colorOfTheDay[0]) {
+                if (guess[0] <= (colorOfTheDay[0] + 25)) hintOne = <FaArrowDown className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[0] <= (colorOfTheDay[0] + 50)) hintOne = <FaArrowDown className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[0] > (colorOfTheDay[0] + 50)) hintOne = <FaArrowDown className={styles.hintArrow} style={{background: 'red'}} />
+            } else hintOne = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
+            // if (guess[0] >= (colorOfTheDay[1] - 25) && guess[1] < colorOfTheDay[1]) hintOne = <FaArrowDown className={styles.hintArrow} style={{background: 'green'}} />
+            if (guess[1] < colorOfTheDay[1]) {
+                if (guess[1] >= (colorOfTheDay[1] - 25)) hintTwo = <FaArrowUp className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[1] >= (colorOfTheDay[1] - 50)) hintTwo = <FaArrowUp className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[1] < (colorOfTheDay[1] - 50)) hintTwo = <FaArrowUp className={styles.hintArrow} style={{background: 'red'}} />
+            } else if (guess[1] > colorOfTheDay[1]) {
+                if (guess[1] <= (colorOfTheDay[1] + 25)) hintTwo = <FaArrowDown className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[1] <= (colorOfTheDay[1] + 50)) hintTwo = <FaArrowDown className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[1] > (colorOfTheDay[1] + 50)) hintTwo = <FaArrowDown className={styles.hintArrow} style={{background: 'red'}} />
+            } else hintTwo = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
+            if (guess[2] < colorOfTheDay[2]) {
+                if (guess[2] >= (colorOfTheDay[2] - 25)) hintThree = <FaArrowUp className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[2] >= (colorOfTheDay[2] - 50)) hintThree = <FaArrowUp className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[2] < (colorOfTheDay[2] - 50)) hintThree = <FaArrowUp className={styles.hintArrow} style={{background: 'red'}} />
+            } else if (guess[2] > colorOfTheDay[2]) {
+                if (guess[2] <= (colorOfTheDay[2] + 25)) hintThree = <FaArrowDown className={styles.hintArrow} style={{background: 'green'}} />
+                else if (guess[2] <= (colorOfTheDay[2] + 50)) hintThree = <FaArrowDown className={styles.hintArrow} style={{background: 'gold'}} />
+                else if (guess[2] > (colorOfTheDay[2] + 50)) hintThree = <FaArrowDown className={styles.hintArrow} style={{background: 'red'}} />
+            } else hintThree = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
+            // if (guess[1] < colorOfTheDay[1]) hintTwo = <FaArrowDown className={styles.hintArrow} />
+            // else if (guess[1] === colorOfTheDay[1]) hintTwo = <ImCheckmark className={styles.checkmarkHint} />
+            // else hintTwo = <FaArrowUp className={styles.hintArrow} />
+            // if (guess[2] < colorOfTheDay[2]) hintThree = <FaArrowDown className={styles.hintArrow} />
+            // else if (guess[2] === colorOfTheDay[2]) hintThree = <ImCheckmark className={styles.checkmarkHint} />
+            // else hintThree = <FaArrowUp className={styles.hintArrow} />
             // Logic for generating hints
             
             

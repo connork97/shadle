@@ -1,6 +1,8 @@
 .App {
   margin: auto;
-  height: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
 }
 
@@ -9,12 +11,13 @@
   pointer-events: none;
 }
 
-.currentAndPastGuessWrapperDiv {
-  margin: 10rem auto;
-  width: 100rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+/* .currentAndPastGuessWrapperDiv {
+  margin: 5% 10%;
+  width: auto;
+  max-width: 100vw;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr; */
+/* } */
 
 .previousGuesses {
   display: flex;

@@ -55,45 +55,47 @@ const Guess = ({ setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGue
     return (
         <div className={styles.guessWrapperDiv}>
             <form className={styles.guessForm} onSubmit={handleGuessSubmit}>
-            <div className={styles.userGuessDiv}>
-                <label className={styles.userGuessLabel}>R</label>
-                    <input
-                        type="number"
-                        value={currentUserGuess[0]}
-                        min={0}
-                        max={255}
-                        className={styles.userGuessInput}
-                        onChange={(event) => handleUserGuessChange(event, 0)}
+                <div className={styles.userGuessesWrapper}>
+                    <div className={styles.userGuessDiv}>
+                        <label className={styles.userGuessLabel}>R</label>
+                        <input
+                            type="number"
+                            value={currentUserGuess[0]}
+                            min={0}
+                            max={255}
+                            className={styles.userGuessInput}
+                            onChange={(event) => handleUserGuessChange(event, 0)}
+                            >
+                        </input>
+                    </div>
+                    {/* <br></br> */}
+                    <div className={styles.userGuessDiv}>
+                        <label className={styles.userGuessLabel}>G</label>
+                        <input
+                            type="number"
+                            value={currentUserGuess[1]}
+                            min={0}
+                            max={255}
+                            className={styles.userGuessInput}
+                            onChange={(event) => handleUserGuessChange(event, 1)}
+                            >
+                        </input>
+                    </div>
+                    {/* <br></br> */}
+                    <div className={styles.userGuessDiv}>
+                        <label className={styles.userGuessLabel}>B</label>
+                        <input
+                            type="number"
+                            value={currentUserGuess[2]}
+                            min={0}
+                            max={255}
+                            className={styles.userGuessInput}
+                            onChange={(event) => handleUserGuessChange(event, 2)}
                         >
-                    </input>
+                        </input>
+                    </div>
                 </div>
-                <br></br>
-                <div className={styles.userGuessDiv}>
-                <label className={styles.userGuessLabel}>G</label>
-                    <input
-                        type="number"
-                        value={currentUserGuess[1]}
-                        min={0}
-                        max={255}
-                        className={styles.userGuessInput}
-                        onChange={(event) => handleUserGuessChange(event, 1)}
-                    >
-                    </input>
-                </div>
-                <br></br>
-                <div className={styles.userGuessDiv}>
-                    <label className={styles.userGuessLabel}>B</label>
-                    <input
-                        type="number"
-                        value={currentUserGuess[2]}
-                        min={0}
-                        max={255}
-                        className={styles.userGuessInput}
-                        onChange={(event) => handleUserGuessChange(event, 2)}
-                    >
-                    </input>
-                </div>
-                <br></br>
+                {/* <br></br> */}
                 <button className={styles.submitGuessButton} style={{backgroundColor: `${rgbColorOfTheDay}`, color: `${useGetContrastColor(rgbColorOfTheDay)}`}} type="submit">Place Guess!</button>
             </form>
         </div>

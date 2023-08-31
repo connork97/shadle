@@ -1,5 +1,19 @@
-.userGuessDiv {
+.guessForm {
     margin: auto;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    width: 50rem;
+}
+
+.userGuessesWrapper {
+    display: flex;
+    width: 75%;
+    /* height: 100%; */
+}
+
+.userGuessDiv {
+    margin: auto 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +24,7 @@
 .userGuessLabel {
     /* margin: auto; */
     margin-bottom: 7.5px;
-    margin-right: 2%;
+    margin-right: 5%;
     font-size: 3rem;
     font-weight: bold;
 }
@@ -28,16 +42,56 @@
 .userGuessInput[type="number"]::-webkit-inner-spin-button,
 .userGuessInput[type="number"]::-webkit-outer-spin-button {
   /* Styles here */
-  appearance: none;
-  margin: 0;
+    appearance: none;
+    margin: 0;
 }
 
 .submitGuessButton {
     /* height: 5rem; */
     /* width: 10rem; */
-    padding: 0.75rem 1rem;
+    height: 3.5rem;
+    width: 25%;
+    /* padding: 0.5rem 1rem; */
     border-radius: 20px;
     border-width: 1px;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .guessForm {
+        width: 90vw;
+        flex-direction: column;
+    }
+
+    .userGuessesWrapper {
+        width: 100%;
+    }
+
+    .userGuessDiv {
+        width: 33%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .userGuessLabel {
+        width: 5%;
+        font-size: 200%;
+        margin-left: -15%;
+        /* margin-right: 25%; */
+    }
+
+    .userGuessInput {
+        width: 100%;
+        font-size: 150%;
+        margin-left: 25%;
+        margin-right: -15%;
+    }
+
+    .submitGuessButton {
+        width: 75%;
+        /* height: 50%; */
+        font-size: 150%;
+    }
 }

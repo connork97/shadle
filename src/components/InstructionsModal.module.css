@@ -14,8 +14,8 @@
 .instructionsModalDiv {
 /* position: absolute; */
     position: relative;
-    width: 100rem;
-    height: 52.5rem;
+    width: 80rem;
+    height: 40rem;
     background-color: white;
     padding: 20px;
     border-radius: 50px;
@@ -24,20 +24,34 @@
 }
 
 .welcomeH1 {
+    margin-top: -0.25rem;
     position: relative;
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
 }
 
-
 .welcomeH2 {
-    font-size: 3rem;
+    font-size: 2.25rem;
     margin-top: -1.5rem;
+}
+
+.rubricDiv {
+    margin: 1.25rem auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.instructionsP, .arrowHintP, .colorHintP {
+    font-size: 1.75rem;
+}
+
+.instructionsIcon {
+    margin-bottom: -0.25rem;
 }
 
 .closeButton {
     position: relative;
-    margin: 3rem auto;
+    margin: 1.5rem auto;
     height: 10%;
     width: 17.5%;
     border: none;
@@ -49,14 +63,37 @@
     background: linear-gradient(45deg, rgba(255, 0, 0, 0.65), rgba(255, 165, 0, 0.65), rgba(255, 255, 0, 0.65), rgba(0, 128, 0, 0.65), rgba(0, 0, 255, 0.65), rgba(75, 0, 130, 0.65), rgba(148, 0, 211, 0.65));
 }
 
+@media only screen and (max-width: 768px) {
+    .welcomeH1 {
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
 
+    .welcomeH2 {
+        font-size: 1.4rem;
+    }
 
-.instructionsP, .hintsP {
-    font-size: 2rem;
+    .rubricDiv {
+        display: block;
+        margin: 2rem auto;
+    }
+
+    .instructionsP {
+        font-size: 1.25rem;
+        text-align: justify;
+    }
+
+    .arrowHintP {
+        font-size: 1.15rem;
+    }
+
+    .colorHintP {
+        font-size: 1.25rem;
+    }
+
+    .closeButton {
+        margin: 1rem;
+        font-size: 1.5rem;
+        width: 35%;
+    }
 }
-
-
-  .colorP {
-    font-size: 3rem;
-    font-weight: bold;
-  }

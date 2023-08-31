@@ -19,12 +19,20 @@ const InstructionsModal = ({ instructionsModalIsOpen, closeInstructionsModal }) 
                     <span style={{color: 'darkviolet'}}>!</span>
                 </h1>
                 <h2 className={styles.welcomeH2}>The RGB Color Guessing Game</h2>
-                <p className={styles.instructionsP}>You have 6 attempts to guess the exact RGB value of the color on the screen.</p>
+                <p className={styles.instructionsP}>You have <u>6 attempts</u> to guess the exact RGB value of the color on the screen.</p>
                 <p className={styles.instructionsP}>You'll also get hints along the way!  Here's the rubric:</p>
-                <p className={styles.hintsP}><FaArrowDown /> - You guessed too low.</p>
-                <p className={styles.hintsP}><FaArrowUp /> - You guessed too high.</p>
-                <p className={styles.hintsP}><ImCheckmark /> - You got it on the dot!</p>
-                {/* <p className={styles.colorP}>{rgbColorOfTheDay}</p> */}
+                <div className={styles.rubricDiv}>
+                    <div>
+                        <p className={styles.arrowHintP}><FaArrowUp className={styles.instructionsIcon} /> - The answer is <b><em>higher</em></b> than you guessed.</p>
+                        <p className={styles.arrowHintP}><FaArrowDown className={styles.instructionsIcon} /> - The answer is <b><em>lower</em></b> than you guessed.</p>
+                        <p className={styles.arrowHintP}><ImCheckmark className={styles.instructionsIcon} /> - You got it on the dot!</p>
+                    </div>
+                    <div>
+                        <p className={styles.colorHintP}><span style={{color: 'green', fontWeight: 'bold'}}>Green Arrows</span> mean you're very close.</p>
+                        <p className={styles.colorHintP}><span style={{color: 'gold', fontWeight: 'bold'}}>Yellow Arrows</span> mean you're fairly close.</p>
+                        <p className={styles.colorHintP}><span style={{color: 'red', fontWeight: 'bold'}}>Red Arrows</span> mean you're far off.</p>
+                    </div>
+                </div>
                 <button className={styles.closeButton} onClick={closeInstructionsModal}>
                     <span className={styles.closeButtonSpan} style={{opacity: '1'}}>Got it!</span>
                 </button>

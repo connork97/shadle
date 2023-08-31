@@ -1,9 +1,16 @@
 .mainColorDiv {
-    margin: 3rem auto;
+    margin: 3rem auto 1rem auto;
     height: 20rem;
     width: 20rem;
+    max-width: 100vw;
     /* background-color: rgb(1, 2, 3); */
     border-radius: 25px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 
+}
+
+@media only screen and (max-width: 768px) {
+    .mainColorDiv {
+        margin-top: -10%;
+    }    
 }

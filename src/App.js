@@ -19,7 +19,13 @@ function App() {
   const [rgbColorOfTheDay, setRgbColorOfTheDay] = useState(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
   const [opaqueRgbColorOfTheDay, setOpaqueRgbColorOfTheDay] = useState(`rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.5)`)
   const [previousUserGuesses, setPreviousUserGuesses] = useState([])
-  
+  const contrastColor = useGetContrastColor(rgbColorOfTheDay)
+  const [gameOverModalIsOpen, setGameOverModalIsOpen] = useState(false);
+
+    // if (gameOverModalIsOpen) {
+    //   setContrastColor(useGetContrastColor(rgbColorOfTheDay))
+    // }
+
   useEffect(() => {
     setRgbColorOfTheDay(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
     setOpaqueRgbColorOfTheDay(`rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.25)`)
@@ -37,7 +43,6 @@ function App() {
       setColorOfTheDay([firstNum, secondNum, thirdNum])
   }, []);
 
-  const [gameOverModalIsOpen, setGameOverModalIsOpen] = useState(false);
 
   const openGameOverModal = () => {
     setGameOverModalIsOpen(true);
@@ -65,6 +70,8 @@ function App() {
         closeInstructionsModal={closeInstructionsModal}      
       />
       <GameOverModal
+        previousUserGuesses={previousUserGuesses}
+        contrastColor={contrastColor}
         gameResult={gameResult}
         colorOfTheDay={colorOfTheDay}
         rgbColorOfTheDay={rgbColorOfTheDay}
