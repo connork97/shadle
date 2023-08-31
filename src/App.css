@@ -7,7 +7,35 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.shadleH1 {
+  font-size: 5rem;
+}
+
+.shadleH2 {
+  font-size: 2.5rem;
+}
+
+.currentAndPastGuessWrapperDiv {
+  margin: 10rem auto;
+  width: 100rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.previousGuesses {
+  display: flex;
+  align-items: flex-start;
+}
+
+.currentAndPastGuessWrapperDiv Guess {
+  /* width: 50%; */
+}
+
+.currentAndPastGuessWrapperDiv PreviousGuesses {
+  /* width: 50%; */
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -26,7 +54,7 @@
 
 .App-link {
   color: #61dafb;
-}
+}  
 
 @keyframes App-logo-spin {
   from {
@@ -35,12 +63,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.shadleH1 {
-  font-size: 5rem;
-}
-
-.shadleH2 {
-  font-size: 2.5rem;
-}
+} */

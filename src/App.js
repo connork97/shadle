@@ -7,6 +7,7 @@ import Color from './components/Color';
 import Guess from './components/Guess';
 import PreviousGuesses from './components/PreviousGuesses';
 import WinModal from './components/WinModal';
+import useGetContrastColor from './utils/useGetContrastColor';
 
 function App() {
 
@@ -53,16 +54,20 @@ function App() {
         colorOfTheDay={colorOfTheDay}
         rgbColorOfTheDay={rgbColorOfTheDay}
       />
-      <Guess 
-        colorOfTheDay={colorOfTheDay}
-        previousUserGuesses={previousUserGuesses}
-        setPreviousUserGuesses={setPreviousUserGuesses}
-        openWinModal={openWinModal}
-      />
-      <PreviousGuesses
-        colorOfTheDay={colorOfTheDay}
-        previousUserGuesses={previousUserGuesses}
-      />
+      <div className='currentAndPastGuessWrapperDiv'>
+        <Guess 
+          colorOfTheDay={colorOfTheDay}
+          rgbColorOfTheDay={rgbColorOfTheDay}
+          previousUserGuesses={previousUserGuesses}
+          setPreviousUserGuesses={setPreviousUserGuesses}
+          openWinModal={openWinModal}
+        />
+        <PreviousGuesses
+          className='PreviousGuesses'
+          colorOfTheDay={colorOfTheDay}
+          previousUserGuesses={previousUserGuesses}
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,41 @@
+.userGuessDiv {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100%; */
+    width: 35rem;
+}
+
+.userGuessLabel {
+    /* margin: auto; */
+    margin-bottom: 7.5px;
+    margin-right: 2%;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.userGuessInput {
+    /* margin: auto; */
+    font-size: 2rem;
+    text-align: center;
+    width: 7.5rem;
+    /* height: 1.5rem; */
+}
+
+.userGuessInput[type="number"]::-webkit-inner-spin-button,
+.userGuessInput[type="number"]::-webkit-outer-spin-button {
+  /* Styles here */
+  appearance: none;
+  margin: 0;
+}
+
+.submitGuessButton {
+    /* height: 5rem; */
+    /* width: 10rem; */
+    padding: 1rem;
+    border-radius: 25px;
+    border-width: 1px;
+    font-size: 3rem;
+    cursor: pointer;
+}
