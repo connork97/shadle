@@ -1,6 +1,9 @@
 import { render } from '@testing-library/react';
 import styles from './PreviousGuesses.module.css';
 
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { ImCheckmark } from 'react-icons/im';
+
 const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
     
     const getContrastColor = (color) => {
@@ -9,30 +12,73 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
         return brightness >= 128 ? 'black' : 'white';
       };
     
-    const renderPreviousUserGuesses = previousUserGuesses.map((guess, index) => {
-        let hintOne
-        let hintTwo
-        let hintThree
-        if (guess[0] < colorOfTheDay[0]) hintOne = '↑'
-        else hintOne = '↓'
-        if (guess[1] < colorOfTheDay[1]) hintTwo = '↑'
-        else hintTwo = '↓'
-        if (guess[2] < colorOfTheDay[2]) hintThree = '↑'
-        else hintThree = '↓'
+    // const renderPreviousUserGuesses = previousUserGuesses.map((guess, index) => {
+    //     let hintOne
+    //     let hintTwo
+    //     let hintThree
+    //     if (guess[0] < colorOfTheDay[0]) hintOne = '↑'
+    //     else if (guess[0] === colorOfTheDay[0]) hintOne = '✔'
+    //     else hintOne = '↓'
+    //     if (guess[1] < colorOfTheDay[1]) hintTwo = '↑'
+    //     else if (guess[1] === colorOfTheDay[1]) hintTwo = '✔'
+    //     else hintTwo = '↓'
+    //     if (guess[2] < colorOfTheDay[2]) hintThree = '↑'
+    //     else if (guess[2] === colorOfTheDay[2]) hintThree = '✔'
+    //     else hintThree = '↓'
         
-        const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`
+    //     const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`
 
-        console.log(index)
-        return (
-            <p 
-                className={styles.previousGuessP}
-                style={{ backgroundColor: `${guessRGB}`, color: `${getContrastColor(guessRGB)}`}}
-            >
-                rgb({guess[0]}, {guess[1]}, {guess[2]}) → {hintOne} {hintTwo} {hintThree}
-            </p>
-        )
-    })
+    //     console.log(index)
+    //     return (
+    //         <p 
+    //             className={styles.previousGuessP}
+    //             style={{ backgroundColor: `${guessRGB}`, color: `${getContrastColor(guessRGB)}`}}
+    //         >
+    //             rgb({guess[0]}, {guess[1]}, {guess[2]}) → {hintOne} {hintTwo} {hintThree}
+    //         </p>
+    //     )
+    // })
+    const renderPreviousUserGuesses = [];
+    
+    for (let index = 0; index < 6; index++) {
+        const guess = previousUserGuesses[index];
+        if (guess) {
+            const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`;
 
+            let hintOne, hintTwo, hintThree;
+            if (guess[0] < colorOfTheDay[0]) hintOne = <FaArrowDown className={styles.hintArrow} />
+            else if (guess[0] === colorOfTheDay[0]) hintOne = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
+            else hintOne = <FaArrowUp className={styles.hintArrow} />
+            if (guess[1] < colorOfTheDay[1]) hintTwo = <FaArrowDown className={styles.hintArrow} />
+            else if (guess[1] === colorOfTheDay[1]) hintTwo = <ImCheckmark className={styles.checkmarkHint} />
+            else hintTwo = <FaArrowUp className={styles.hintArrow} />
+            if (guess[2] < colorOfTheDay[2]) hintThree = <FaArrowDown className={styles.hintArrow} />
+            else if (guess[2] === colorOfTheDay[2]) hintThree = <ImCheckmark className={styles.checkmarkHint} />
+            else hintThree = <FaArrowUp className={styles.hintArrow} />
+            // Logic for generating hints
+            
+            
+            renderPreviousUserGuesses.push(
+                <p 
+                    key={index}
+                    className={styles.previousGuessP}
+                    style={{ backgroundColor: `${guessRGB}`, color: `${getContrastColor(guessRGB)}`}}
+                >
+                    rgb({guess[0]}{hintOne}, {guess[1]}{hintTwo}, {guess[2]}{hintThree})
+                </p>
+            );
+        } else {
+            renderPreviousUserGuesses.push(
+                <p 
+                    key={index}
+                    className={styles.previousGuessP}
+                >
+                    {/* You have {6 - previousUserGuesses.length} guesses remaining. */}
+                    &nbsp;
+                </p>
+            );
+        }
+    }
     
 
     return (

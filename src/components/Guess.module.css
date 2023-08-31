@@ -20,6 +20,8 @@
     font-size: 2rem;
     text-align: center;
     width: 7.5rem;
+    border-radius: 15px;
+    border-width: 1px;
     /* height: 1.5rem; */
 }
 

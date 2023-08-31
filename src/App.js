@@ -7,6 +7,7 @@ import Color from './components/Color';
 import Guess from './components/Guess';
 import PreviousGuesses from './components/PreviousGuesses';
 import WinModal from './components/WinModal';
+import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
 
 function App() {
@@ -20,6 +21,10 @@ function App() {
     setRgbColorOfTheDay(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
     setOpaqueRgbColorOfTheDay(`rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.25)`)
   }, [colorOfTheDay])
+
+  useEffect(() => {
+    document.body.style.backgroundColor = `rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.25)`;
+  }, [])
 
   console.log(opaqueRgbColorOfTheDay)
   useEffect(() => {
@@ -39,6 +44,16 @@ function App() {
     setWinModalIsOpen(false);
   };
 
+  const [instructionsModalIsOpen, setInstructionsModalIsOpen] = useState(true);
+
+  const openInstructionsModal = () => {
+    setInstructionsModalIsOpen(true)
+  }
+
+  const closeInstructionsModal = () => {
+    setInstructionsModalIsOpen(false)
+  }
+
   return (
     <div className="App">
       <h1 className="shadleH1">Welcome to Shadle!</h1>
@@ -49,6 +64,10 @@ function App() {
         opaqueRgbColorOfTheDay={opaqueRgbColorOfTheDay}
         winModalIsOpen={winModalIsOpen} 
         closeWinModal={closeWinModal}      
+      />
+      <InstructionsModal
+        instructionsModalIsOpen={instructionsModalIsOpen}
+        closeInstructionsModal={closeInstructionsModal}      
       />
       <Color
         colorOfTheDay={colorOfTheDay}

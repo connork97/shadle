@@ -5,10 +5,33 @@
 }
 
 .previousGuessP {
+    /* display: inline-block; */
     margin: 0.5rem auto;
     /* width: 35rem; */
+    width: auto;
+    height: 3.25rem;
     border-radius: 25px;
     font-size: 2rem;
     line-height: 3.25rem;
-    /* background-color: rgb(225, 225, 225); */
+    background-color: rgb(255, 255, 255);
+}
+
+.hintArrow {
+    margin-bottom: -0.15rem;   
+    margin-left: 0.25rem;
+    background-color: white;
+    color: black;
+    width: 1rem;
+    height: 1.5rem;
+    border: 1px solid black;
+    border-radius: 25%;
+}
+
+.checkmarkHint {
+    position: relative;
+    margin-bottom: -0.25rem;
+    margin-left: 0.25rem;
+    transform: scaleY(1.5);
+    width: 1.25rem;
+    z-index: 1;
 }
