@@ -1,6 +1,6 @@
 .guessForm {
-    margin: auto;
-    margin-bottom: 2rem;
+    margin: 5rem auto 4rem auto;
+    /* margin-bottom: 2rem; */
     display: flex;
     align-items: center;
     width: 50rem;
@@ -61,6 +61,7 @@
 
 @media only screen and (max-width: 768px) {
     .guessForm {
+        margin-top: 2rem;
         width: 90vw;
         flex-direction: column;
     }

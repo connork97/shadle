@@ -23,7 +23,10 @@ const GameOverModal = ({ previousUserGuesses, contrastColor, gameResult, rgbColo
         <div className={styles.gameOverModalOverlay} style={overlayBackgroundColor}>
             <div className={styles.gameOverModalDiv}>
                 <p className={styles.resultP}>{gameResult === true ? "Congratulations, you won!" : "Sorry, you lost."}</p>
-                {!gameResult && <p className={styles.correctColorP}>Your final guess was: <span style={{color: `${lastUserGuess}`, fontWeight: 'bold'}}>{lastUserGuess}</span></p>}
+                {!gameResult && <p className={styles.yourColorP}>Your final guess was: 
+                <br></br>
+                <span className={styles.colorP} style={{color: `${lastUserGuess}`, fontWeight: 'bold'}}>{lastUserGuess}</span></p>
+                }
                 <p className={styles.correctColorP}>The correct color of the day {gameResult === true ? "is" : "was"}:</p>
                 <p className={styles.colorP} style={colorOfTheDayStyle}>{rgbColorOfTheDay}</p>
                 <button className={styles.closeButton} style={buttonBackgroundColor} onClick={closeGameOverModal}>
