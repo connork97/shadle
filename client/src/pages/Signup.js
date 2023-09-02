@@ -59,7 +59,7 @@ const Signup = ({ openInstructionsModal }) => {
 
     return (
         <Fragment>
-            <Navbar openInstructionsModal={openInstructionsModal} />
+            {/* <Navbar openInstructionsModal={openInstructionsModal} /> */}
             <div>
                 <h1 className={styles.signupH1}>Create An Account!</h1>
                 <form className={styles.signupForm} onSubmit={handleUserSignupSubmit}>

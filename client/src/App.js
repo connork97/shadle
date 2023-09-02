@@ -6,6 +6,9 @@ import React, { useState, useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+
 import Account from './pages/Account';
 
 import Color from './components/Color';
@@ -15,7 +18,6 @@ import GameOverModal from './components/GameOverModal';
 import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
 import Navbar from './components/Navbar';
-import Signup from './pages/Signup';
 
 function App() {
 
@@ -67,20 +69,32 @@ function App() {
   const closeInstructionsModal = () => {
     setInstructionsModalIsOpen(false)
   }
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const router = createBrowserRouter([
-    { path: '/', element: 
-      <Home
-        openInstructionsModal={openInstructionsModal}
-        setGameResult={setGameResult}
-        colorOfTheDay={colorOfTheDay}
-        rgbColorOfTheDay={rgbColorOfTheDay}
-        previousUserGuesses={previousUserGuesses}
-        setPreviousUserGuesses={setPreviousUserGuesses}
-        openGameOverModal={openGameOverModal}
-      />
-    },
-    { path: '/signup', element: <Signup openInstructionsModal={openInstructionsModal} />}
+    {
+      element: 
+        <Navbar
+          showDropdown={showDropdown}
+          setShowDropdown={setShowDropdown}
+          openInstructionsModal={openInstructionsModal}
+        />,
+      children: [   
+        { path: '/', element: 
+          <Home
+            openInstructionsModal={openInstructionsModal}
+            setGameResult={setGameResult}
+            colorOfTheDay={colorOfTheDay}
+            rgbColorOfTheDay={rgbColorOfTheDay}
+            previousUserGuesses={previousUserGuesses}
+            setPreviousUserGuesses={setPreviousUserGuesses}
+            openGameOverModal={openGameOverModal}
+          />
+        },
+        { path: '/signup', element: <Signup openInstructionsModal={openInstructionsModal} />},
+        { path: '/login', element: <Login />}
+    ]
+    }
   ])
 
   return (

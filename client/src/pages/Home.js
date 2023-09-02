@@ -10,9 +10,9 @@ import PreviousGuesses from '../components/PreviousGuesses';
 const Home = ({ openInstructionsModal, colorOfTheDay, rgbColorOfTheDay, setGameResult, previousUserGuesses, setPreviousUserGuesses, openGameOverModal}) => {
     return (
         <Fragment>
-            <Navbar 
+            {/* <Navbar 
                 openInstructionsModal={openInstructionsModal}
-            />
+            /> */}
             <Color
                 colorOfTheDay={colorOfTheDay}
                 rgbColorOfTheDay={rgbColorOfTheDay}

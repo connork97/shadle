@@ -59,5 +59,24 @@ def signup():
     
     return response
 
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        print("Logging in user...")
+        try:
+            form_data = request.get_json()
+            email = form_data['email']
+            password = form_data['password']
+
+            user = User.query.filter(User.email == email).one_or_none()
+
+            if user and user.authenticate(password):
+                response = make_response(user.to_dict(), 200)
+
+        except:
+            response = make_response({"error": "Unable to authenticate user login."}, 404)
+
+    return response
+
 if __name__ == '__main__':
     app.run(debug=True)

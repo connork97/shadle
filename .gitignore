@@ -39,5 +39,5 @@ yarn-error.log*
 node_modules
 client/node_modules
 .eslintcache
-/server
+# server
 # What I have manually added is above
