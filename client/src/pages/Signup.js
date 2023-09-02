@@ -4,7 +4,7 @@ import React, { Fragment, useState } from 'react';
 
 import Navbar from '../components/Navbar';
 
-const Signup = ({ openInstructionsModal }) => {
+const Signup = ({ setLoggedInUser }) => {
 
     const [userSignupInfo, setUserSignupInfo] = useState({
         firstName: '',
@@ -34,6 +34,7 @@ const Signup = ({ openInstructionsModal }) => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log("Signup Response Data: ", responseData);
+                setLoggedInUser(responseData);
             }
             else {
                 console.log("Signup Error: !response.ok")

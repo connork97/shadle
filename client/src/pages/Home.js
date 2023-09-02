@@ -7,7 +7,7 @@ import Color from '../components/Color';
 import Guess from '../components/Guess';
 import PreviousGuesses from '../components/PreviousGuesses';
 
-const Home = ({ openInstructionsModal, colorOfTheDay, rgbColorOfTheDay, setGameResult, previousUserGuesses, setPreviousUserGuesses, openGameOverModal}) => {
+const Home = ({ postGameResults, openInstructionsModal, colorOfTheDay, rgbColorOfTheDay, setGameResult, previousUserGuesses, setPreviousUserGuesses, openGameOverModal}) => {
     return (
         <Fragment>
             {/* <Navbar 
@@ -19,6 +19,7 @@ const Home = ({ openInstructionsModal, colorOfTheDay, rgbColorOfTheDay, setGameR
             />
             <div className='currentAndPastGuessWrapperDiv'>
                 <Guess
+                    postGameResults={postGameResults}
                     setGameResult={setGameResult}
                     colorOfTheDay={colorOfTheDay}
                     rgbColorOfTheDay={rgbColorOfTheDay}

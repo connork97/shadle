@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import useGetContrastColor from '../utils/useGetContrastColor';
 
-const Guess = ({ setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGuesses, setPreviousUserGuesses, openGameOverModal, openLoseModal }) => {
+const Guess = ({ postGameResults, setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGuesses, setPreviousUserGuesses, openGameOverModal, openLoseModal }) => {
 
     const [currentUserGuess, setCurrentUserGuess] = useState([0, 0, 0]);
 
@@ -27,14 +27,14 @@ const Guess = ({ setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGue
                     return [currentUserGuess, ...prevGuesses]
                 });
                 setGameResult(true);
+                // postGameResults();
                 openGameOverModal();
-                console.log("You got it!  The color of the day is: ", colorOfTheDay)
-                // openGameOverModal()
             } else if (previousUserGuesses.length === 5) {
                 setPreviousUserGuesses((prevGuesses) => {
                     return [currentUserGuess, ...prevGuesses]
                 });
                 setGameResult(false);
+                // postGameResults();
                 openGameOverModal();
                 // window.alert("Sorry, you lost.")
             } 
@@ -42,12 +42,9 @@ const Guess = ({ setGameResult, colorOfTheDay, rgbColorOfTheDay, previousUserGue
                 setPreviousUserGuesses((prevGuesses) => {
                     return [currentUserGuess, ...prevGuesses]
                 });
-                console.log("Sorry, try again.", currentUserGuess)
             };
             document.body.style.backgroundColor = `rgba(${currentUserGuess[0]}, ${currentUserGuess[1]}, ${currentUserGuess[2]}, 0.25)`;
-            // setCurrentUserGuess([0, 0, 0]);
         } else {
-            console.log("You already guessed that number!")
             window.alert("You already guessed that!  Try again.")
         }
     };

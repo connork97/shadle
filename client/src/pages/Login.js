@@ -2,7 +2,7 @@ import styles from './Login.module.css';
 
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ setLoggedInUser }) => {
 
     const [loginInfo, setLoginInfo] = useState({
         email: '',
@@ -30,6 +30,7 @@ const Login = () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log("Login Response Data: ", responseData);
+                setLoggedInUser(responseData)
             }
             else {
                 console.log("Login Error: !response.ok")
@@ -61,7 +62,7 @@ const Login = () => {
                     onChange={handleLoginInfoChange}
                     >
                 </input>
-                <button type='submit' className={styles.loginButton}>Create Account!</button>
+                <button type='submit' className={styles.loginButton}>Login</button>
             </form>
         </div>
     )

@@ -19,7 +19,9 @@ const NavbarDropdown = ({ setShowDropdown}) => {
                     <li className={styles.navbarDropdownLi}>
                         <Link to='/login' className={styles.navbarDropdownLink} onClick={handleCloseDropdown}>Login</Link>
                     </li>
-                    <li className={styles.navbarDropdownLi} onClick={handleCloseDropdown}>Profile</li>
+                    <li className={styles.navbarDropdownLi} onClick={handleCloseDropdown}>
+                        <Link to='/profile' className={styles.navbarDropdownLink} onClick={handleCloseDropdown}>Profile</Link>
+                    </li>
                     <li className={styles.navbarDropdownLi} style={{borderBottom: 'none'}} onClick={handleCloseDropdown}>Stats</li>
                 {/* </li> */}
             </ul>
