@@ -1,0 +1,74 @@
+.navbarWrapperDiv {
+    margin-bottom: 5rem;
+    margin: auto;
+    height: 6rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mainNavbarDiv {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 6rem;
+}
+
+.shadleH1 {
+    /* margin: auto; */
+    /* width: 25%; */
+    text-align: center;
+    font-size: 4rem;
+    text-decoration: none;    
+}
+
+.navbarLink {
+    text-decoration: none;
+}
+
+.menuIcon, .accountIcon {
+    /* width: 70%; */
+    /* height: 3rem; */
+    scale: 2.5;
+}
+
+.menuIcon {
+    /* margin-left: 100%; */
+    transition: 0.5s ease-in-out;
+    background: white;
+    border-radius: 25%;    
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* text-align: right; */
+}
+
+.accountIcon {
+    /* margin-right: 100%; */
+    transition: 0.5s ease-in-out;
+    color: black;
+    background: white;
+    border-radius: 50%;
+}
+
+.menuIcon:hover {
+    transform: scale(1.2); /* Scale up by 1.2x */
+    transition: transform 0.5s; /* Transition over 0.5 seconds */
+    cursor: pointer;
+}
+
+.accountIcon:hover {
+    transform: scale(1.2); /* Scale up by 1.2x */
+    transition: transform 0.5s; /* Transition over 0.5 seconds */
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .navbarWrapperDiv {
+        height: 4rem;
+    }
+    .shadleH1 {
+        font-size: 3rem;
+    }
+}

@@ -3,6 +3,11 @@ import './App.css';
 
 import React, { useState, useEffect } from 'react';
 
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Account from './pages/Account';
+
 import Color from './components/Color';
 import Guess from './components/Guess';
 import PreviousGuesses from './components/PreviousGuesses';
@@ -10,6 +15,7 @@ import GameOverModal from './components/GameOverModal';
 import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
 import Navbar from './components/Navbar';
+import Signup from './pages/Signup';
 
 function App() {
 
@@ -62,9 +68,26 @@ function App() {
     setInstructionsModalIsOpen(false)
   }
 
+  const router = createBrowserRouter([
+    { path: '/', element: 
+      <Home
+        openInstructionsModal={openInstructionsModal}
+        setGameResult={setGameResult}
+        colorOfTheDay={colorOfTheDay}
+        rgbColorOfTheDay={rgbColorOfTheDay}
+        previousUserGuesses={previousUserGuesses}
+        setPreviousUserGuesses={setPreviousUserGuesses}
+        openGameOverModal={openGameOverModal}
+      />
+    },
+    { path: '/signup', element: <Signup openInstructionsModal={openInstructionsModal} />}
+  ])
+
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar 
+        openInstructionsModal={openInstructionsModal}
+      /> */}
       <InstructionsModal
         instructionsModalIsOpen={instructionsModalIsOpen}
         closeInstructionsModal={closeInstructionsModal}      
@@ -79,7 +102,8 @@ function App() {
         gameOverModalIsOpen={gameOverModalIsOpen} 
         closeGameOverModal={closeGameOverModal}      
       />
-      <Color
+      <RouterProvider router={router} />
+      {/* <Color
         colorOfTheDay={colorOfTheDay}
         rgbColorOfTheDay={rgbColorOfTheDay}
       />
@@ -97,7 +121,7 @@ function App() {
           colorOfTheDay={colorOfTheDay}
           previousUserGuesses={previousUserGuesses}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

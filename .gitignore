@@ -21,3 +21,23 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# What I have manually added is below
+
+# Ignore all logfiles and tempfiles.
+/log/*
+!/log/.keep
+/tmp
+
+# Virtual env metadata
+.venv
+
+# pytest cache
+.pytest_cache
+/client/node_modules
+node_modules
+client/node_modules
+.eslintcache
+/server
+# What I have manually added is above
