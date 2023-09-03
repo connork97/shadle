@@ -1,0 +1,41 @@
+.profileWrapperDiv {
+    margin: 5% auto;
+    /* display: flex; */
+    /* vertical-align: center; */
+    /* width: 100vw;
+    height: 90vh; */
+    width: 60rem;
+    height: 30rem;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.profileH1 {
+    padding-top: 2.5%;
+    font-size: 300%;
+}
+
+.profileH2 {
+    font-size: 200%;
+}
+
+.mainProfileDiv {
+    margin: 2.5rem auto;
+    width: 50%;
+    text-align: center;
+    /* width: 75rem; */
+    /* height: 30rem; */
+    /* background-color: white; */
+    /* border-radius: 50px; */
+}
+
+.profileP {
+    font-size: 150%;
+    font-weight: bold;
+    margin: 2rem auto;
+}
+
+.lossesSpan {
+    margin-left: 13.5%;
+}

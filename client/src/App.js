@@ -19,6 +19,7 @@ import GameOverModal from './components/GameOverModal';
 import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
 import Navbar from './components/Navbar';
+import GlobalStats from './pages/GlobalStats';
 
 function App() {
 
@@ -133,8 +134,8 @@ function App() {
       {
         element: 
           <Navbar
-          showDropdown={showDropdown}
-          setShowDropdown={setShowDropdown}
+            showDropdown={showDropdown}
+            setShowDropdown={setShowDropdown}
             openInstructionsModal={openInstructionsModal}
             />,
         children: [   
@@ -152,16 +153,14 @@ function App() {
           },
           { path: '/signup', element: <Signup setLoggedInUser={setLoggedInUser} openInstructionsModal={openInstructionsModal} />},
           { path: '/login', element: <Login setLoggedInUser={setLoggedInUser} />},
-          { path: '/profile', element: <Profile loggedInUser={loggedInUser} />}
+          { path: '/profile', element: <Profile loggedInUser={loggedInUser} />},
+          { path: '/stats', element: <GlobalStats />}
         ]
       }
     ])
   
     return (
     <div className="App">
-      {/* <Navbar 
-        openInstructionsModal={openInstructionsModal}
-      /> */}
       <InstructionsModal
         instructionsModalIsOpen={instructionsModalIsOpen}
         closeInstructionsModal={closeInstructionsModal}      
@@ -178,42 +177,8 @@ function App() {
         closeGameOverModal={closeGameOverModal}      
       />
       <RouterProvider router={router} />
-      {/* <Color
-        colorOfTheDay={colorOfTheDay}
-        rgbColorOfTheDay={rgbColorOfTheDay}
-      />
-      <div className='currentAndPastGuessWrapperDiv'>
-        <Guess
-          setGameResult={setGameResult}
-          colorOfTheDay={colorOfTheDay}
-          rgbColorOfTheDay={rgbColorOfTheDay}
-          previousUserGuesses={previousUserGuesses}
-          setPreviousUserGuesses={setPreviousUserGuesses}
-          openGameOverModal={openGameOverModal}
-        />
-        <PreviousGuesses
-          className='PreviousGuesses'
-          colorOfTheDay={colorOfTheDay}
-          previousUserGuesses={previousUserGuesses}
-        />
-      </div> */}
     </div>
   );
 }
 
 export default App;
-
-{/* <header className="App-header">
-  <img src={logo} className="App-logo" alt="logo" />
-  <p>
-    Edit <code>src/App.js</code> and save to reload.
-  </p>
-  <a
-    className="App-link"
-    href="https://reactjs.org"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Learn React
-  </a>
-</header> */}

@@ -1,0 +1,48 @@
+.statsWrapperDiv {
+    margin: 5% auto;
+    display: flex;
+    /* width: 60rem; */
+    /* height: 30rem; */
+}
+
+.averageStatsDiv, .leaderboardDiv {
+    margin: 2.5rem auto;
+    width: 35%;
+    padding: 0 3rem 1rem;
+    /* height: 100%; */
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.innerLeaderboardWrapper {
+    display: flex;
+}
+
+.leadersDiv {
+    width: 33%;
+}
+
+.statsH1 {
+    /* padding-top: 2.5%; */
+    font-size: 300%;
+}
+
+.statsH2 {
+    font-size: 200%;
+}
+
+.statsTitle {
+    font-size: 250%;
+    font-weight: bold;
+}
+
+.statsLabel {
+    font-size: 125%;
+    font-weight: bold;
+}
+
+.leaderP {
+    font-size: 100%;
+    font-weight: bold;
+}
