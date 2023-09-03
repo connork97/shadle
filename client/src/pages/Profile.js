@@ -23,7 +23,7 @@ const Profile = ({ loggedInUser }) => {
 
     useEffect(() => {
         fetchLoggedInUserGames();
-    }, [])
+    }, [loggedInUser])
 
     return (
         <div className={styles.profileWrapperDiv}>

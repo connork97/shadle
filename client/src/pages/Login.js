@@ -2,7 +2,11 @@ import styles from './Login.module.css';
 
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 const Login = ({ setLoggedInUser }) => {
+
+    const navigate = useNavigate();
 
     const [loginInfo, setLoginInfo] = useState({
         email: '',
@@ -31,6 +35,8 @@ const Login = ({ setLoggedInUser }) => {
                 const responseData = await response.json();
                 console.log("Login Response Data: ", responseData);
                 setLoggedInUser(responseData)
+                localStorage.setItem('_id_hash', responseData._id_hash)
+                navigate('/profile');
             }
             else {
                 console.log("Login Error: !response.ok")

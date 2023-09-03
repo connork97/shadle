@@ -20,24 +20,50 @@ import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';
 import Navbar from './components/Navbar';
 import GlobalStats from './pages/GlobalStats';
+import Logout from './pages/Logout';
 
 function App() {
-
+  
   const [loggedInUser, setLoggedInUser] = useState({});
 
   const [gameResult, setGameResult] = useState(null);
   const [percentScore, setPercentScore] = useState(0);
-
+  
   const [colorOfTheDay, setColorOfTheDay] = useState([0, 0, 0])
   const [rgbColorOfTheDay, setRgbColorOfTheDay] = useState(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
   const [opaqueRgbColorOfTheDay, setOpaqueRgbColorOfTheDay] = useState(`rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.5)`)
   const [previousUserGuesses, setPreviousUserGuesses] = useState([])
   const contrastColor = useGetContrastColor(rgbColorOfTheDay)
   const [gameOverModalIsOpen, setGameOverModalIsOpen] = useState(false);
-
+  const [instructionsModalIsOpen, setInstructionsModalIsOpen] = useState(true);
+  
     // if (gameOverModalIsOpen) {
     //   setContrastColor(useGetContrastColor(rgbColorOfTheDay))
     // }
+
+  const checkLoginStatus = async(idHash) => {
+    const response = await fetch(`http://localhost:5555/check-session`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'_id_hash': idHash})
+    })
+    if (response.ok) {
+      const userData = await response.json()
+      console.log(userData)
+      setLoggedInUser(userData)
+    }
+  }
+  useEffect(() => {
+    const idHash = localStorage.getItem('_id_hash')
+    if (idHash) {
+      checkLoginStatus(idHash);
+      // .then((response) => response.json())
+      // .then((userData) => console.log(userData))
+    }
+    else console.log("no _id_hash to login user with")
+  }, [])
 
   useEffect(() => {
     setRgbColorOfTheDay(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
@@ -65,7 +91,6 @@ function App() {
     setGameOverModalIsOpen(false);
   };
   
-  const [instructionsModalIsOpen, setInstructionsModalIsOpen] = useState(true);
 
   const openInstructionsModal = () => {
     setInstructionsModalIsOpen(true)
@@ -151,10 +176,11 @@ function App() {
               openGameOverModal={openGameOverModal}
             />
           },
-          { path: '/signup', element: <Signup setLoggedInUser={setLoggedInUser} openInstructionsModal={openInstructionsModal} />},
-          { path: '/login', element: <Login setLoggedInUser={setLoggedInUser} />},
-          { path: '/profile', element: <Profile loggedInUser={loggedInUser} />},
-          { path: '/stats', element: <GlobalStats />}
+          { path: '/signup', element: <Signup setLoggedInUser={setLoggedInUser} openInstructionsModal={openInstructionsModal} /> },
+          { path: '/login', element: <Login setLoggedInUser={setLoggedInUser} /> },
+          { path: '/logout', element: <Logout setLoggedInUser={setLoggedInUser} /> },
+          { path: '/profile', element: <Profile loggedInUser={loggedInUser} /> },
+          { path: '/stats', element: <GlobalStats /> }
         ]
       }
     ])

@@ -30,7 +30,9 @@ LOCAL_DOMAIN = 'http://localhost:4000'
 
 # api = Api(app)
 
-
+# app.config.from_pyfile('config.py')
+# secret_key = app.config['SECRET_KEY']
+# app.config['SESSION_TYPE'] = 'null'
 @app.route('/')
 def home():
     return ''
@@ -43,14 +45,20 @@ def signup():
             form_data = request.get_json()
             new_user = User(
                 email=form_data['email'],
+                id_hash=form_data['email'] + form_data['firstName'] + form_data['lastName'],
                 password_hash=form_data['password'],
                 first_name=form_data['firstName'],
                 last_name=form_data['lastName']
             )
             db.session.add(new_user)
             db.session.commit()
+
+            
+
             # new_user_dict = new_user.to_dict()
             response = make_response(new_user.to_dict(), 201)
+            # session['user_id'] = new_user.email
+            # response.set_cookie('user_id', new_user.email)
 
         except IntegrityError as e:
             print({'error': 'Could not create new user'})
@@ -60,7 +68,7 @@ def signup():
     
     return response
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         print("Logging in user...")
@@ -73,11 +81,37 @@ def login():
 
             if user and user.authenticate(password):
                 response = make_response(user.to_dict(rules=('-games',)), 200)
+            return response
 
         except:
             response = make_response({"error": "Unable to authenticate user login."}, 404)
 
+            return response
+
+@app.route('/check-session', methods=['POST'])
+def check_session():
+    if request.method == 'POST':
+        try:
+            form_data = request.get_json()
+            user_id_hash = form_data['_id_hash']
+            user = User.query.filter(User._id_hash == user_id_hash).one_or_none()
+            response = make_response(user.to_dict(), 200)
+        
+        except:
+            response = make_response({'error': 'could not login user from _id_hash'}, 404)
+
     return response
+# @app.route('/set-cookie', methods = ['POST', 'GET'])
+# def set_cookie():
+#    if request.method == 'POST':
+#     form_data = request.get_json()
+#     user_cookie = request.form['nm']
+   
+#     resp = make_response(render_template('readcookie.html'))
+#    resp.set_cookie('userID', user)
+   
+#    return resp
+# @app.route('/check-session', methods=[''])
 
 @app.route('/games', methods=['POST'])
 def games():
@@ -130,7 +164,10 @@ def games_by_user(id):
             # average_score = user.games(func.avg(Game.percent_score)).scalar()
             # average_score_sql = text('SELECT AVG(percent_score) AS average_percent_score FROM games WHERE user_id = :id;')
             # average_score = func.avg(user.games.percent_score)
-            average_score = total_score / total_games
+            if total_score is not 0 and total_games is not 0:
+                average_score = total_score / total_games
+            else:
+                average_score = 0
             # average_guesses_sql = text('SELECT AVG(guesses) AS average_guesses FROM games WHERE user_id = :id;')
             average_guesses = 0
             if total_wins:

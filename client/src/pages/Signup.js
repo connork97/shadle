@@ -35,6 +35,7 @@ const Signup = ({ setLoggedInUser }) => {
                 const responseData = await response.json();
                 console.log("Signup Response Data: ", responseData);
                 setLoggedInUser(responseData);
+                localStorage.setItem('_id_hash', responseData._id_hash)
             }
             else {
                 console.log("Signup Error: !response.ok")
