@@ -81,12 +81,11 @@ def login():
 
             if user and user.authenticate(password):
                 response = make_response(user.to_dict(rules=('-games',)), 200)
-            return response
 
         except:
             response = make_response({"error": "Unable to authenticate user login."}, 404)
 
-            return response
+    return response
 
 @app.route('/check-session', methods=['POST'])
 def check_session():
@@ -101,17 +100,6 @@ def check_session():
             response = make_response({'error': 'could not login user from _id_hash'}, 404)
 
     return response
-# @app.route('/set-cookie', methods = ['POST', 'GET'])
-# def set_cookie():
-#    if request.method == 'POST':
-#     form_data = request.get_json()
-#     user_cookie = request.form['nm']
-   
-#     resp = make_response(render_template('readcookie.html'))
-#    resp.set_cookie('userID', user)
-   
-#    return resp
-# @app.route('/check-session', methods=[''])
 
 @app.route('/games', methods=['POST'])
 def games():
@@ -151,7 +139,6 @@ def games_by_user(id):
             total_losses = 0
             total_score = 0
             total_guesses = 0
-            # average_score = 
             for game in user_games:
                 if game.win == True:
                     total_wins += 1
@@ -159,21 +146,14 @@ def games_by_user(id):
                 if game.win == False:
                     total_losses += 1
                 total_score += game.percent_score
-            # total_games = user.games.len()
-            # total_wins = user.games.filter(Game.win == True).count()
-            # average_score = user.games(func.avg(Game.percent_score)).scalar()
-            # average_score_sql = text('SELECT AVG(percent_score) AS average_percent_score FROM games WHERE user_id = :id;')
-            # average_score = func.avg(user.games.percent_score)
-            if total_score is not 0 and total_games is not 0:
+            if total_score != 0 and total_games != 0:
                 average_score = total_score / total_games
             else:
                 average_score = 0
-            # average_guesses_sql = text('SELECT AVG(guesses) AS average_guesses FROM games WHERE user_id = :id;')
             average_guesses = 0
             if total_wins:
                 average_guesses = total_guesses / total_wins
                 total_losses = total_games - total_wins
-            # average_guesses = user.games.with_entities(func.avg(Game.guesses)).scalar()
             response = make_response(
                 {'total_games': total_games,
                 'total_wins': total_wins,

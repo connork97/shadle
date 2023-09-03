@@ -2,9 +2,12 @@ import styles from './Signup.module.css';
 
 import React, { Fragment, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const Signup = ({ setLoggedInUser }) => {
+
+    const navigate = useNavigate();
 
     const [userSignupInfo, setUserSignupInfo] = useState({
         firstName: '',
@@ -12,6 +15,8 @@ const Signup = ({ setLoggedInUser }) => {
         email: '',
         password: ''
     })
+
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const handleUserSignupInfoChange = (event) => {
         const { name, value } = event.target;
@@ -23,41 +28,34 @@ const Signup = ({ setLoggedInUser }) => {
 
     const handleUserSignupSubmit = async (event) => {
         event.preventDefault()
-        try {
-            const response = await fetch('http://localhost:5555/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userSignupInfo),
-            })
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log("Signup Response Data: ", responseData);
-                setLoggedInUser(responseData);
-                localStorage.setItem('_id_hash', responseData._id_hash)
+        if (userSignupInfo.password === confirmPassword) {
+            try {
+                const response = await fetch('http://localhost:5555/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userSignupInfo),
+                })
+                if (response.ok) {
+                    const responseData = await response.json();
+                    console.log("Signup Response Data: ", responseData);
+                    setLoggedInUser(responseData);
+                    localStorage.setItem('_id_hash', responseData._id_hash)
+                    navigate('/profile')
+                }
+                else {
+                    window.alert("Sorry! This email is already taken.  Try a different one.")
+                }
             }
-            else {
-                console.log("Signup Error: !response.ok")
+            catch (error) {
+                console.error("An error occurred during signup: ", error);
             }
         }
-        catch (error) {
-            console.error("An error occurred during signup: ", error);
+        else window.alert("Your passwords must match.")
         }
-    }
 
-    // const handleUserSignupSubmit = (event) => {
-    //     event.preventDefault();
-    //     fetch('http://localhost:5555/signup', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(userSignupInfo),
-    //     })
-    //     .then((response) => response.json())
-    //     .then((signupData) => console.log(signupData))
-    // }
+
 
     return (
         <Fragment>
@@ -72,7 +70,8 @@ const Signup = ({ setLoggedInUser }) => {
                         value={userSignupInfo.firstName}
                         className={styles.signupFormInput}
                         onChange={handleUserSignupInfoChange}
-                        >
+                        required
+                    >
                     </input>
                     <input
                         name='lastName'
@@ -81,6 +80,7 @@ const Signup = ({ setLoggedInUser }) => {
                         value={userSignupInfo.lastName}
                         className={styles.signupFormInput}
                         onChange={handleUserSignupInfoChange}
+                        required
                     >
                     </input>
                     <input 
@@ -90,7 +90,8 @@ const Signup = ({ setLoggedInUser }) => {
                         value={userSignupInfo.email}
                         className={styles.signupFormInput}
                         onChange={handleUserSignupInfoChange}
-                        >
+                        required
+                    >
                     </input>
                     <input
                         name='password'
@@ -99,7 +100,18 @@ const Signup = ({ setLoggedInUser }) => {
                         value={userSignupInfo.password}
                         className={styles.signupFormInput}
                         onChange={handleUserSignupInfoChange}
-                        >
+                        required
+                    >
+                    </input>
+                    <input
+                        name='password'
+                        type='password'
+                        placeholder='Confirm Password'
+                        value={confirmPassword}
+                        className={styles.signupFormInput}
+                        onChange={(event) => setConfirmPassword(event.target.value)}
+                        required
+                    >
                     </input>
                     <button type='submit' className={styles.createAccountButton}>Create Account!</button>
                 </form>

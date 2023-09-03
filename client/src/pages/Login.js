@@ -39,7 +39,7 @@ const Login = ({ setLoggedInUser }) => {
                 navigate('/profile');
             }
             else {
-                console.log("Login Error: !response.ok")
+                window.alert("This username and/or password doesn't match our records. \nPlease double check them and try again.")
             }
         }
         catch (error) {

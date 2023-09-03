@@ -33,9 +33,9 @@ const GameOverModal = ({ colorOfTheDay, percentScore, previousUserGuesses, contr
                 }
                 <p className={styles.correctColorP}>The correct color of the day {gameResult === true ? "is" : "was"}:</p>
                 <p className={styles.colorP} style={colorOfTheDayStyle}>{rgbColorOfTheDay}</p>
-                <button className={styles.closeButton} style={buttonBackgroundColor} onClick={closeGameOverModal}>
+                {/* <button className={styles.closeButton} style={buttonBackgroundColor} onClick={closeGameOverModal}>
                 Close
-                </button>
+                </button> */}
                 <button className={styles.closeButton} style={buttonBackgroundColor} onClick={() => window.location.reload()}>
                 Play Again
                 </button>

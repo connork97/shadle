@@ -99,7 +99,7 @@ function App() {
   const closeInstructionsModal = () => {
     setInstructionsModalIsOpen(false)
   }
-  const [showDropdown, setShowDropdown] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
   
   useEffect(() => {
     if (previousUserGuesses.length > 0) {
@@ -159,8 +159,9 @@ function App() {
       {
         element: 
           <Navbar
-            showDropdown={showDropdown}
-            setShowDropdown={setShowDropdown}
+            loggedInUser={loggedInUser}
+            // showDropdown={showDropdown}
+            // setShowDropdown={setShowDropdown}
             openInstructionsModal={openInstructionsModal}
             />,
         children: [   
@@ -178,7 +179,7 @@ function App() {
           },
           { path: '/signup', element: <Signup setLoggedInUser={setLoggedInUser} openInstructionsModal={openInstructionsModal} /> },
           { path: '/login', element: <Login setLoggedInUser={setLoggedInUser} /> },
-          { path: '/logout', element: <Logout setLoggedInUser={setLoggedInUser} /> },
+          { path: '/logout', element: <Logout loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> },
           { path: '/profile', element: <Profile loggedInUser={loggedInUser} /> },
           { path: '/stats', element: <GlobalStats /> }
         ]

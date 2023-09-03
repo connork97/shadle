@@ -11,40 +11,14 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
         const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
         return brightness >= 128 ? 'black' : 'white';
       };
-    
-    // const renderPreviousUserGuesses = previousUserGuesses.map((guess, index) => {
-    //     let hintOne
-    //     let hintTwo
-    //     let hintThree
-    //     if (guess[0] < colorOfTheDay[0]) hintOne = '↑'
-    //     else if (guess[0] === colorOfTheDay[0]) hintOne = '✔'
-    //     else hintOne = '↓'
-    //     if (guess[1] < colorOfTheDay[1]) hintTwo = '↑'
-    //     else if (guess[1] === colorOfTheDay[1]) hintTwo = '✔'
-    //     else hintTwo = '↓'
-    //     if (guess[2] < colorOfTheDay[2]) hintThree = '↑'
-    //     else if (guess[2] === colorOfTheDay[2]) hintThree = '✔'
-    //     else hintThree = '↓'
-        
-    //     const guessRGB = `rgb(${guess[0]}, ${guess[1]}, ${guess[2]})`
 
-    //     console.log(index)
-    //     return (
-    //         <p 
-    //             className={styles.previousGuessP}
-    //             style={{ backgroundColor: `${guessRGB}`, color: `${getContrastColor(guessRGB)}`}}
-    //         >
-    //             rgb({guess[0]}, {guess[1]}, {guess[2]}) → {hintOne} {hintTwo} {hintThree}
-    //         </p>
-    //     )
-    // })
     const renderPreviousUserGuesses = [];
     const remainingGuesses = Math.max(0, 6 - previousUserGuesses.length);
     
     if (remainingGuesses > 0) {
         renderPreviousUserGuesses.push(
             <p key={-1} className={styles.previousGuessP}>
-                You have {remainingGuesses} guesses left.
+                You have {remainingGuesses} guess{remainingGuesses !== 1 && "es"} left.
             </p>
         );
     }
