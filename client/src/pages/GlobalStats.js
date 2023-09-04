@@ -9,7 +9,7 @@ const GlobalStats = () => {
 
     const fetchGlobalStats = async() => {
         try {
-            const response = await fetch('http://localhost:5555/global-stats')
+            const response = await fetch('https://shadle-back-end.onrender.com/global-stats')
             if (response.ok) {
                 const globalStatsData = await response.json();
                 console.log(globalStatsData);

@@ -42,7 +42,7 @@ function App() {
     // }
 
   const checkLoginStatus = async(idHash) => {
-    const response = await fetch(`http://localhost:5555/check-session`, {
+    const response = await fetch(`https://shadle-back-end.onrender.com/check-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -130,7 +130,7 @@ function App() {
         gameResultsBody.user_id = loggedInUser.id
       }
       try {
-        const response = await fetch('http://localhost:5555/games', {
+        const response = await fetch('https://shadle-back-end.onrender.com/games', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -24,7 +24,7 @@ const Login = ({ setLoggedInUser }) => {
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:5555/login', {
+            const response = await fetch('https://shadle-back-end.onrender.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

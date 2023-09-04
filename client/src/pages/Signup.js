@@ -30,7 +30,7 @@ const Signup = ({ setLoggedInUser }) => {
         event.preventDefault()
         if (userSignupInfo.password === confirmPassword) {
             try {
-                const response = await fetch('http://localhost:5555/signup', {
+                const response = await fetch('https://shadle-back-end.onrender.com/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

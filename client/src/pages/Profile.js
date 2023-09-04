@@ -8,7 +8,7 @@ const Profile = ({ loggedInUser }) => {
 
     const fetchLoggedInUserGames = async() => {
         try {
-            const response = await fetch(`http://localhost:5555/games_by_user/${loggedInUser.id}`)
+            const response = await fetch(`https://shadle-back-end.onrender.com/games_by_user/${loggedInUser.id}`)
             if (response.ok) {
                 const gameData = await response.json();
                 console.log("User game data: ", gameData)

@@ -58,14 +58,6 @@ const PreviousGuesses = ({ colorOfTheDay, previousUserGuesses }) => {
                 else if (guess[2] <= (colorOfTheDay[2] + 50)) hintThree = <FaArrowDown className={styles.hintArrow} style={{background: 'gold'}} />
                 else if (guess[2] > (colorOfTheDay[2] + 50)) hintThree = <FaArrowDown className={styles.hintArrow} style={{background: 'red'}} />
             } else hintThree = <ImCheckmark style={{color: `${getContrastColor(guessRGB)}`}} className={styles.checkmarkHint} />
-            // if (guess[1] < colorOfTheDay[1]) hintTwo = <FaArrowDown className={styles.hintArrow} />
-            // else if (guess[1] === colorOfTheDay[1]) hintTwo = <ImCheckmark className={styles.checkmarkHint} />
-            // else hintTwo = <FaArrowUp className={styles.hintArrow} />
-            // if (guess[2] < colorOfTheDay[2]) hintThree = <FaArrowDown className={styles.hintArrow} />
-            // else if (guess[2] === colorOfTheDay[2]) hintThree = <ImCheckmark className={styles.checkmarkHint} />
-            // else hintThree = <FaArrowUp className={styles.hintArrow} />
-            // Logic for generating hints
-            
             
             renderPreviousUserGuesses.push(
                 <p 
