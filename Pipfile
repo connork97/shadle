@@ -19,6 +19,7 @@ honcho = "*"
 flask-bcrypt = "*"
 pipenv = "*"
 shell = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
