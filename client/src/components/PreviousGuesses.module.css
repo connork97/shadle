@@ -43,8 +43,9 @@
     }
 
     .previousGuessP {
-        height: 2.5rem;
+        height: 2.25rem;
         font-size: 1.5rem;
         line-height: 2rem;
+        /* vertical-align: center; */
     }
 }

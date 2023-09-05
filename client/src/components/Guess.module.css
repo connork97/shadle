@@ -78,8 +78,12 @@
 
     .userGuessLabel {
         width: 5%;
-        font-size: 200%;
-        margin-left: -15%;
+        font-size: 150%;
+        /* margin-top: 5%; */
+        vertical-align: center;
+        margin-bottom: 0;
+        margin-left: -7.5%;
+        margin-right: 0%;
         /* margin-right: 25%; */
     }
 
@@ -94,5 +98,6 @@
         width: 75%;
         /* height: 50%; */
         font-size: 150%;
+        margin-bottom: -7.5%;
     }
 }

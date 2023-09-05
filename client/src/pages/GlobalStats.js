@@ -35,7 +35,7 @@ const GlobalStats = () => {
 
     return (
         <Fragment>
-            <h1 className={styles.statsH1}>Global Stats</h1>
+            <h1 className={styles.statsH1}>Site Stats</h1>
             <div className={styles.statsWrapperDiv}>
             <div className={styles.averageStatsDiv}>
                 <p className={styles.statsTitle}>Site Totals</p>
@@ -50,15 +50,15 @@ const GlobalStats = () => {
                 <p className={styles.statsTitle}>Leaders</p>
                 <div className={styles.innerLeaderboardWrapper}>
                     <div className={styles.leadersDiv}>
-                        <p className={styles.statsLabel}>Games Played:</p>
+                        <p className={styles.leadersLabel}>Games Played:</p>
                         {Object.keys(globalStats).length > 0 && renderLeaders(globalStats.games_played_leaders)}
                     </div>
                     <div className={styles.leadersDiv}>
-                        <p className={styles.statsLabel}>Wins:</p>
+                        <p className={styles.leadersLabel}>Wins:</p>
                         {Object.keys(globalStats).length > 0 && renderLeaders(globalStats.win_leaders)}
                     </div>
                     <div className={styles.leadersDiv}>
-                        <p className={styles.statsLabel}>Average Score:</p>
+                        <p className={styles.leadersLabel}>Average Score:</p>
                         {Object.keys(globalStats).length > 0 && renderLeaders(globalStats.average_score_leaders)}
                     </div>
                 </div>

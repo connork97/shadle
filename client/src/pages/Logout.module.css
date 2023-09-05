@@ -18,3 +18,12 @@
     border-radius: 17.5px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+    .logoutH1 {
+        font-size: 200%;
+    }
+    .logoutH2 {
+        font-size: 165%;
+    }
+}

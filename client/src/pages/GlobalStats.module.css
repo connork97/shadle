@@ -37,7 +37,7 @@
     font-weight: bold;
 }
 
-.statsLabel {
+.statsLabel, .leadersLabel {
     font-size: 125%;
     font-weight: bold;
 }
@@ -45,4 +45,31 @@
 .leaderP {
     font-size: 100%;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    .statsWrapperDiv {
+        flex-direction: column;
+        margin: 2.5% auto;
+    }
+    .averageStatsDiv, .leaderboardDiv {
+        width: 80vw;
+        padding: 1rem;
+        margin: 2.5% auto 10% auto;
+    }
+    .statsTitle {
+        margin: 5% auto;
+    }
+    .innerLeaderboardWrapper {
+        flex-direction: column;
+    }
+    .leadersDiv {
+        width: 100%;
+    }
+    .leadersLabel {
+        font-size: 175%;
+    }
+    .leaderP {
+        font-size: 125%;
+    }
 }

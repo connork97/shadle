@@ -29,7 +29,7 @@ const Guess = ({ postGameResults, setGameResult, colorOfTheDay, rgbColorOfTheDay
                 setGameResult(true);
                 // postGameResults();
                 openGameOverModal();
-            } else if (previousUserGuesses.length === 6) {
+            } else if (previousUserGuesses.length === 5) {
                 setPreviousUserGuesses((prevGuesses) => {
                     return [currentUserGuess, ...prevGuesses]
                 });

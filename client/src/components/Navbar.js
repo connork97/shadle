@@ -12,17 +12,14 @@ import MenuDropdown from './MenuDropdown';
 const Navbar = ({ loggedInUser, openInstructionsModal }) => {
     const [showAccountDropdown, setShowAccountDropdown] = useState(false);
     const [showMenuDropdown, setShowMenuDropdown] = useState(false);
-  
-    // useEffect(() => {
-    //     if (showAccountDropdown ) setShowMenuDropdown(false);
-    //     if (showMenuDropdown) setShowAccountDropdown(false);
-    // }, [showAccountDropdown, showMenuDropdown])
 
     const toggleAccountDropdown = () => {
-      setShowAccountDropdown(!showAccountDropdown);
+        if (showMenuDropdown) setShowMenuDropdown(false)
+        setShowAccountDropdown(!showAccountDropdown);
     };
 
     const toggleMenuDropdown = () => {
+        if (showAccountDropdown) setShowAccountDropdown(false)
         setShowMenuDropdown(!showMenuDropdown);
     }
   
@@ -43,9 +40,7 @@ const Navbar = ({ loggedInUser, openInstructionsModal }) => {
                         <span style={{color: 'indigo'}}>e</span>
                 </Link>
                     </h1>
-                {/* <Link to='/signup' className={styles.navbarLink}> */}
                 <MdAccountCircle className={styles.accountIcon} onClick={toggleAccountDropdown} />
-                {/* </Link> */}
                 </div>
             </div>
             <Outlet />

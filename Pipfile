@@ -20,6 +20,7 @@ flask-bcrypt = "*"
 pipenv = "*"
 shell = "*"
 psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

@@ -1,11 +1,11 @@
 from app import app
 from models import db, User, Game
 
-if __name__ == '__main__':
-    with app.app_context():
-        print('Creating tables...')
-        db.create_all()
-        print('Tables created.')
+# if __name__ == '__main__':
+    # with app.app_context():
+        # print('Creating tables...')
+        # db.create_all()
+        # print('Tables created.')
 #         print("Dropping tables...")
 #         db.session.query(User).delete()
         # db.session.query(Game).delete()

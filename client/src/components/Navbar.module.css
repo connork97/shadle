@@ -24,11 +24,8 @@
     text-decoration: none;
 }
 
-.menuIcon, .accountIcon {
-    scale: 2.5;
-}
-
 .menuIcon {
+    scale: 2.5;
     transition: 0.5s ease-in-out;
     background: white;
     border-radius: 25%;    
@@ -39,6 +36,7 @@
     color: black;
     background: white;
     border-radius: 50%;
+    scale: 2.75;
 }
 
 .menuIcon:hover {
@@ -57,9 +55,17 @@
 
 @media only screen and (max-width: 768px) {
     .navbarWrapperDiv {
-        height: 4rem;
+        height: 5rem;
+    }
+    .mainNavbarDiv {
+        width: 100%;
     }
     .shadleH1 {
         font-size: 3rem;
+        margin-top: 5%;
+        /* margin-bottom: 5%; */
+    }
+    .menuIcon, .accountIcon {
+        margin-top: -2.5%;
     }
 }

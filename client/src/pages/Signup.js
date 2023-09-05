@@ -61,7 +61,7 @@ const Signup = ({ setLoggedInUser }) => {
         <Fragment>
             {/* <Navbar openInstructionsModal={openInstructionsModal} /> */}
             <div>
-                <h1 className={styles.signupH1}>Create An Account!</h1>
+            <h1 className={styles.signupH1}>Create an Account <br></br>to Track Your Stats!</h1>
                 <form className={styles.signupForm} onSubmit={handleUserSignupSubmit}>
                     <input
                         name='firstName'

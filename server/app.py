@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 from sqlalchemy.exc import IntegrityError
 
-from config import app, db
+from config import *
 
 CORS(app)
 
@@ -33,6 +33,10 @@ LOCAL_DOMAIN = 'http://localhost:4000'
 # app.config.from_pyfile('config.py')
 # secret_key = app.config['SECRET_KEY']
 # app.config['SESSION_TYPE'] = 'null'
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 @app.route('/')
 def home():
     return ''
@@ -70,6 +74,7 @@ def signup():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    response = None
     if request.method == 'POST':
         print("Logging in user...")
         try:
@@ -84,6 +89,9 @@ def login():
 
         except:
             response = make_response({"error": "Unable to authenticate user login."}, 404)
+            
+    if response is None:
+        response = make_response({"error": "Invalid request."}, 400)
 
     return response
 
@@ -312,4 +320,8 @@ def global_stats():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.environ.get("FLASK_ENV") == "production":
+        app.run()
+    else:
+        app.run(debug=True)
+    # app.run(debug=True)

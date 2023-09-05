@@ -39,3 +39,25 @@
 .lossesSpan {
     margin-left: 13.5%;
 }
+
+@media only screen and (max-width: 768px) {
+    .profileWrapperDiv {
+        width: 80vw;
+        height: auto;
+        margin-top: 25%;
+        padding: 2.5% 2.5%;
+    }
+    .profileH1 {
+        font-size: 275%;
+        margin: 0% auto 5% auto;
+    }
+    .profileH2 {
+        font-size: 140%;
+    }
+    .mainProfileDiv {
+        width: 100%;
+    }
+    .profileP {
+        font-size: 125%;
+    }
+}

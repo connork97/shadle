@@ -15,7 +15,7 @@
 /* position: absolute; */
     position: relative;
     width: 80rem;
-    height: 40rem;
+    /* height: 40rem; */
     background-color: white;
     padding: 20px;
     border-radius: 50px;
@@ -26,12 +26,12 @@
 .welcomeH1 {
     margin-top: -0.25rem;
     position: relative;
-    font-size: 4rem;
+    font-size: 350%;
     font-weight: bold;
 }
 
 .welcomeH2 {
-    font-size: 2.25rem;
+    font-size: 175%;
     margin-top: -1.5rem;
 }
 
@@ -39,10 +39,11 @@
     margin: 1.25rem auto;
     display: flex;
     justify-content: space-evenly;
+    /* align-items: center; */
 }
 
 .instructionsP, .arrowHintP, .colorHintP {
-    font-size: 1.75rem;
+    font-size: 125%;
 }
 
 .instructionsIcon {
@@ -57,7 +58,7 @@
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 2.75rem;
+    font-size: 275%;
     color: black;
     font-weight: bolder;
     /* opacity: 0.65; */
@@ -97,6 +98,7 @@
 
     .closeButton {
         /* margin: 1rem; */
+        margin: 0 auto;
         font-size: 1.5rem;
         width: 35%;
     }

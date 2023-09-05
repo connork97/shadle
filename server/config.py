@@ -8,10 +8,14 @@ from sqlalchemy import MetaData
 
 from flask_bcrypt import Bcrypt
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import secrets
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URI")
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = secrets.token_hex(32)

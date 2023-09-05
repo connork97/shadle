@@ -15,6 +15,7 @@
     text-align: center;
     background-color: white;
     border-radius: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .navbarDropdownLi {
@@ -22,6 +23,7 @@
     border-width: 100% !important;
     font-size: 150%;
     padding-bottom: 0.65rem;
+    padding-top: 0.65rem;
     /* line-height: 5rem; */
     list-style-type: none;
     
@@ -32,4 +34,15 @@
     position: relative;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbarDropdownDiv {
+        left: 41.5%;
+    }
+    .navbarDropdownUl {
+        /* margin-right: 25%; */
+        width: 40%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    }
 }

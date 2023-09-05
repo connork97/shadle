@@ -48,7 +48,7 @@ const Login = ({ setLoggedInUser }) => {
     }
     return (
         <div className={styles.loginWrapperDiv}>
-            <h1 className={styles.loginH1}>Login Page</h1>
+            <h1 className={styles.loginH1}>Login</h1>
             <form className={styles.loginForm} onSubmit={handleLoginSubmit}>
                 <input 
                     name='email'
