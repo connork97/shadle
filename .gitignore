@@ -32,6 +32,7 @@ yarn-error.log*
 
 # Virtual env metadata
 .venv
+secret.py
 
 # pytest cache
 .pytest_cache

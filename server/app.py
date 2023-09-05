@@ -35,9 +35,6 @@ app.config.from_object('config')
 # app.config.from_pyfile('config.py')
 # secret_key = app.config['SECRET_KEY']
 # app.config['SESSION_TYPE'] = 'null'
-@app.before_first_request
-def create_tables():
-    db.create_all()
 
 @app.route('/')
 def home():
