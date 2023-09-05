@@ -1,11 +1,11 @@
 from flask import Flask, request, make_response, abort, jsonify, session, redirect
 from sqlalchemy import func
 
-from flask_cors import CORS
+# from flask_cors import CORS
 
 from sqlalchemy.exc import IntegrityError
 
-from config import *
+from config import app, db, CORS
 
 CORS(app)
 
@@ -13,6 +13,8 @@ from models import User, Game
 
 YOUR_DOMAIN = 'http://127.0.0.1:5555'
 LOCAL_DOMAIN = 'http://localhost:4000'
+
+app.config.from_object('config')
 
 # from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
