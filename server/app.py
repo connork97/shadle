@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 from sqlalchemy.exc import IntegrityError
 
-from config import app, db, CORS, SQLALCHEMY_DATABASE_URI
+from config import app, db, CORS
 
 CORS(app)
 
