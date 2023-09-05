@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 from sqlalchemy.exc import IntegrityError
 
-from config import app, db, CORS
+from config import app, db, CORS, os
 
 CORS(app)
 
@@ -322,8 +322,9 @@ def global_stats():
 
 
 if __name__ == '__main__':
-    if os.environ.get("FLASK_ENV") == "production":
-        app.run()
-    else:
-        app.run(debug=True)
+    app.run()
+    # if os.environ.get("FLASK_ENV") == "production":
+    #     app.run()
+    # else:
+    #     app.run(debug=True)
     # app.run(debug=True)
