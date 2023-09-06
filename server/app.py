@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 from sqlalchemy.exc import IntegrityError
 
-from config import app, db, CORS, os
+from config import app, db, CORS, os, load_dotenv
 
 CORS(app)
 
@@ -14,6 +14,7 @@ from models import User, Game
 YOUR_DOMAIN = 'http://127.0.0.1:5555'
 LOCAL_DOMAIN = 'http://localhost:4000'
 
+load_dotenv()
 app.config.from_object('config')
 
 # from flask_sqlalchemy import SQLAlchemy
@@ -23,7 +24,7 @@ app.config.from_object('config')
 
 # app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # db = SQLAlchemy(app)
 # migrate = Migrate(app, db)  # Initialize Flask-Migrate
@@ -110,7 +111,7 @@ def check_session():
                 updated_ip = request.remote_addr
                 user.ip = updated_ip
                 db.session.commit()
-            response = make_response(user.to_dict(), 200)
+            response = make_response(user.to_dict(rules=('-games',)), 200)
         
         except:
             response = make_response({'error': 'could not login user from _id_hash'}, 404)
