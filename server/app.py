@@ -5,7 +5,7 @@ from sqlalchemy import func
 
 from sqlalchemy.exc import IntegrityError
 
-from config import app, db, CORS, os, load_dotenv
+from config import app, db, CORS, os
 
 CORS(app)
 
@@ -14,7 +14,6 @@ from models import User, Game
 YOUR_DOMAIN = 'http://127.0.0.1:5555'
 LOCAL_DOMAIN = 'http://localhost:4000'
 
-load_dotenv()
 app.config.from_object('config')
 
 # from flask_sqlalchemy import SQLAlchemy
@@ -23,8 +22,8 @@ app.config.from_object('config')
 # from flask_bcrypt import Bcrypt
 
 # app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # db = SQLAlchemy(app)
 # migrate = Migrate(app, db)  # Initialize Flask-Migrate
@@ -144,12 +143,12 @@ def games():
         
     return response
 
-@app.route('/games_by_user/<int:id>', methods=['GET'])
-def games_by_user(id):
+@app.route('/games_by_user/<int:_id_hash>', methods=['GET'])
+def games_by_user(_id_hash):
     if request.method == 'GET':
         print('Retrieving user game history...')
         try:
-            user = User.query.filter(User.id == id).one_or_none()
+            user = User.query.filter(User.id == _id_hash).one_or_none()
             user_games = user.games
             total_games = len(user_games)
             total_wins = 0
@@ -329,9 +328,9 @@ def global_stats():
 
 
 if __name__ == '__main__':
-    # app.run()
-    if os.environ.get("FLASK_ENV") == "production":
-        app.run()
-    else:
-        app.run(debug=True)
+    app.run()
+    # if os.environ.get("FLASK_ENV") == "production":
+    #     app.run()
+    # else:
+    #     app.run(debug=True)
     # app.run(debug=True)
