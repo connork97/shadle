@@ -6,6 +6,8 @@ const Profile = ({ loggedInUser }) => {
 
     const [userStats, setUserStats] = useState({})
 
+    console.log(loggedInUser)
+
     const fetchLoggedInUserGames = async() => {
         try {
             const response = await fetch(`https://shadle-back-end.onrender.com/games_by_user/${loggedInUser._id_hash}`)

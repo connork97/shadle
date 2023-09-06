@@ -143,7 +143,7 @@ def games():
         
     return response
 
-@app.route('/games_by_user/<int:_id_hash>', methods=['GET'])
+@app.route('/games_by_user/<string:_id_hash>', methods=['GET'])
 def games_by_user(_id_hash):
     if request.method == 'GET':
         print('Retrieving user game history...')
