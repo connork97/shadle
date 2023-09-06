@@ -328,9 +328,9 @@ def global_stats():
 
 
 if __name__ == '__main__':
-    app.run()
-    # if os.environ.get("FLASK_ENV") == "production":
-    #     app.run()
-    # else:
-    #     app.run(debug=True)
+    # app.run()
+    if os.environ.get("FLASK_ENV") == "production":
+        app.run()
+    else:
+        app.run(debug=True)
     # app.run(debug=True)
