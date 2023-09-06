@@ -23,7 +23,7 @@ class User(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String)
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
-    site_visits = db.Column(db.Integer, default=1)
+    ip = db.Column(db.String)    
 
     games = db.relationship('Game', back_populates='user')
 
@@ -69,6 +69,7 @@ class Game(db.Model, SerializerMixin):
     win = db.Column(db.Boolean)
     guesses = db.Column(db.Integer)
     percent_score = db.Column(db.Float)
+    ip = db.Column(db.String)    
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', back_populates='games')

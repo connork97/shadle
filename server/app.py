@@ -51,7 +51,8 @@ def signup():
                 id_hash=form_data['email'] + form_data['firstName'] + form_data['lastName'],
                 password_hash=form_data['password'],
                 first_name=form_data['firstName'],
-                last_name=form_data['lastName']
+                last_name=form_data['lastName'],
+                ip = request.remote_addr
             )
             db.session.add(new_user)
             db.session.commit()
@@ -82,6 +83,10 @@ def login():
             password = form_data['password']
 
             user = User.query.filter(User.email == email).one_or_none()
+            if user is not None:
+                updated_ip = request.remote_addr
+                user.ip = updated_ip
+                db.session.commit()
 
             if user and user.authenticate(password):
                 response = make_response(user.to_dict(rules=('-games',)), 200)
@@ -101,6 +106,10 @@ def check_session():
             form_data = request.get_json()
             user_id_hash = form_data['_id_hash']
             user = User.query.filter(User._id_hash == user_id_hash).one_or_none()
+            if user is not None:
+                updated_ip = request.remote_addr
+                user.ip = updated_ip
+                db.session.commit()
             response = make_response(user.to_dict(), 200)
         
         except:
