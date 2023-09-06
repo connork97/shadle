@@ -148,7 +148,7 @@ def games_by_user(_id_hash):
     if request.method == 'GET':
         print('Retrieving user game history...')
         try:
-            user = User.query.filter(User.id == _id_hash).one_or_none()
+            user = User.query.filter(User._id_hash == _id_hash).one_or_none()
             user_games = user.games
             total_games = len(user_games)
             total_wins = 0
@@ -250,7 +250,8 @@ def global_stats():
                 db.session.query(
                     User.id.label('user_id'),
                     User.first_name,
-                    User.last_name,
+                    func.substr(User.last_name, 1, 1).label('last_name_initial'),
+                    # User.last_name,
                     func.count().label('total_games_count')
                 )
                 .join(
@@ -269,12 +270,14 @@ def global_stats():
             for row in top_users_by_games_query:
                 user_id = row[0]
                 user_first_name = row[1]
-                user_last_name = row[2]
+                # user_last_name = row[2]
+                last_name_initial = row[2]
                 total_games_count = row[3]
-
+                games_leader_name = user_first_name + ' ' + last_name_initial
                 games_played_leaders.append({
                     'user_id': user_id,
-                    'name': user_first_name + ' ' + user_last_name,
+                    # 'name': user_first_name + ' ' + user_last_name,
+                    'name': games_leader_name,
                     'count': total_games_count
                 })
 
