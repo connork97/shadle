@@ -95,9 +95,11 @@
     }
 
     .submitGuessButton {
-        width: 75%;
+        width: 50%;
+        height: 3rem;
         /* height: 50%; */
-        font-size: 150%;
-        margin-bottom: -7.5%;
+        font-size: 125%;
+        margin-top: 5%;
+        margin-bottom: -5.5%;
     }
 }

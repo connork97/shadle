@@ -129,7 +129,8 @@ def games():
                 win = bool(game_data['win']),
                 guesses = game_data['guesses'],
                 percent_score = game_data['percent_score'],
-                user_id = game_data['user_id']
+                user_id = game_data['user_id'],
+                ip = request.remote_addr
             )
             db.session.add(new_game)
             db.session.commit()

@@ -10,7 +10,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     serialize_rules=(
-        '-id',
+        # '-id',
         '-_password_hash',
         '-ip',
         '-games.user',

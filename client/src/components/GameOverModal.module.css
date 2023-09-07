@@ -65,7 +65,8 @@
 
 @media only screen and (max-width: 768px) {
   .gameOverModalDiv {
-    height: 30rem;
+    width: 70rem;
+    height: 25rem;
   }
   .resultP {
     font-size: 2.5rem;
@@ -86,10 +87,10 @@
   .closeButton {
     font-size: 1.4rem;
     height: 3.5rem;
-    margin: 2.75rem 0.5rem;
+    margin: auto 0.5rem;
     /* margin-left: 0.5rem; */
     /* margin-right: 0.5rem; */
-    width: 35%;
+    width: 60%;
     /* width: auto; */
   }
 }
