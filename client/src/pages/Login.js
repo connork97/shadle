@@ -4,9 +4,13 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
+import Spinner from '../components/Spinner'
+
 const Login = ({ setLoggedInUser }) => {
 
     const navigate = useNavigate();
+
+    const [loggingIn, setLoggingIn] = useState(false);
 
     const [loginInfo, setLoginInfo] = useState({
         email: '',
@@ -23,6 +27,7 @@ const Login = ({ setLoggedInUser }) => {
 
     const handleLoginSubmit = async (event) => {
         event.preventDefault();
+        setLoggingIn(true);
         try {
             const response = await fetch('https://shadle-back-end.onrender.com/login', {
                 method: 'POST',
@@ -41,10 +46,13 @@ const Login = ({ setLoggedInUser }) => {
             else {
                 window.alert("This username and/or password doesn't match our records. \nPlease double check them and try again.")
             }
+            // setLoggingIn(false);
         }
         catch (error) {
             console.error("An error occurred during login: ", error);
+            // setLoggingIn(false);
         }
+        setLoggingIn(false);
     }
     return (
         <div className={styles.loginWrapperDiv}>
@@ -57,6 +65,7 @@ const Login = ({ setLoggedInUser }) => {
                     value={loginInfo.email}
                     className={styles.loginFormInput}
                     onChange={handleLoginInfoChange}
+                    required
                     >
                 </input>
                 <input
@@ -66,9 +75,14 @@ const Login = ({ setLoggedInUser }) => {
                     value={loginInfo.password}
                     className={styles.loginFormInput}
                     onChange={handleLoginInfoChange}
+                    required
                     >
-                </input>
+                </input>              
                 <button type='submit' className={styles.loginButton}>Login</button>
+                {loggingIn && 
+                <div className={styles.loadingSpinner}>
+                </div>
+                }
             </form>
         </div>
     )

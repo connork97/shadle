@@ -24,6 +24,10 @@
     text-decoration: none;
 }
 
+.menuIcon, .accountIcon {
+    z-index: 11;
+}
+
 .menuIcon {
     scale: 2.5;
     transition: 0.5s ease-in-out;

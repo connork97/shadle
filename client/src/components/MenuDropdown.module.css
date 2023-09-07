@@ -2,16 +2,18 @@
     position: absolute;
     width: 100%;
     /* left: 22.5rem; */
+    top: 5rem;
     right: 0;
     /* display: flex; */
     /* justify-content: flex-end; */
     /* margin-left: 100%; */
+    z-index: 10;
 }
 
 .menuDropdownUl {
     width: 10%;
     margin-left: 29%;
-    margin-top: 5.5rem;
+    /* margin-top: 5.5rem; */
     padding: 1rem 2rem;
     text-align: center;
     background-color: white;

@@ -3,18 +3,20 @@ import styles from './Signup.module.css';
 import React, { Fragment, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import Spinner from '../components/Spinner';
 
 const Signup = ({ setLoggedInUser }) => {
 
     const navigate = useNavigate();
+
+    const [signingUp, setSigningUp] = useState(false);
 
     const [userSignupInfo, setUserSignupInfo] = useState({
         firstName: '',
         lastName: '',
         email: '',
         password: ''
-    })
+    });
 
     const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -29,6 +31,7 @@ const Signup = ({ setLoggedInUser }) => {
     const handleUserSignupSubmit = async (event) => {
         event.preventDefault()
         if (userSignupInfo.password === confirmPassword) {
+            setSigningUp(true);
             try {
                 const response = await fetch('https://shadle-back-end.onrender.com/signup', {
                     method: 'POST',
@@ -51,6 +54,7 @@ const Signup = ({ setLoggedInUser }) => {
             catch (error) {
                 console.error("An error occurred during signup: ", error);
             }
+            setSigningUp(false);
         }
         else window.alert("Your passwords must match.")
         }
@@ -114,6 +118,7 @@ const Signup = ({ setLoggedInUser }) => {
                     >
                     </input>
                     <button type='submit' className={styles.createAccountButton}>Create Account!</button>
+                    {signingUp && <Spinner />}
                 </form>
             </div>
         </Fragment>

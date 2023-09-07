@@ -2,7 +2,9 @@
     position: absolute;
     width: 100%;
     left: 58.5%;
+    top: 5rem;
     /* margin-left: 100%; */
+    z-index: 10;
 }
 
 .navbarDropdownUl {
@@ -10,7 +12,7 @@
     /* margin-left: 21.5%; */
     /* margin-left: 15rem; */
     /* margin-right: 30vw; */
-    margin-top: 5.5rem;
+    /* margin-top: 5.5rem; */
     padding: 1rem 2rem;
     text-align: center;
     background-color: white;
