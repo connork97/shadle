@@ -11,7 +11,7 @@ const Color = ({ colorOfTheDay, rgbColorOfTheDay }) => {
         if (colorDivRef.current) {
         //   const backgroundColor = window.getComputedStyle(colorDivRef.current).backgroundColor;
         //   console.log('Background color:', backgroundColor);
-            console.log("Color of the Day: ", colorOfTheDay)
+            // console.log("Color of the Day: ", colorOfTheDay)
         }
     }, [colorOfTheDay]);
 

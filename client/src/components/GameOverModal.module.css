@@ -24,11 +24,17 @@
 }
 
 .resultP {
-  margin-top: 0;
+  margin-top: 1%;
   position: relative;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
 }
+
+/* .guessesP {
+  font-size: 175%;
+  font-weight: bold;
+  margin-top: -5%;
+} */
 
 .correctColorP, .yourColorP {
   font-weight: 500;
@@ -52,15 +58,40 @@
 }
 
 .closeButton {
-  margin: -0.5rem 1rem;
+  margin: -1rem 1rem;
   position: relative;
-  height: 10%;
-  width: 17.5%;
+  height: 12.5%;
+  width: 25%;
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
+}
+
+.loadingSpinner {
+  margin: auto;
+  /* margin-top: 50%; */
+  width: 50px;
+  height: 50px;
+  border: 10px solid transparent;
+  /* border-top: 10px solid #383636; */
+  border-radius: 100%;
+  animation: spinner 2s ease-in-out infinite;
+}
+
+@keyframes spinner {
+  0% {
+      transform: rotate(0deg);
+  }
+  50% {
+      border: 10px solid transparent;
+      border-top: 10px solid #383636;
+
+  }
+  85%, 100% {
+      transform: rotate(360deg);
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -69,6 +100,7 @@
     height: 25rem;
   }
   .resultP {
+    /* margin-top: 10%; */
     font-size: 2.5rem;
   }
 
@@ -87,10 +119,12 @@
   .closeButton {
     font-size: 1.4rem;
     height: 3.5rem;
-    margin: auto 0.5rem;
+    /* margin: auto 0.5rem; */
+    /* margin-top: 0%; */
+    /* bottom: -5rem; */
     /* margin-left: 0.5rem; */
     /* margin-right: 0.5rem; */
-    width: 60%;
+    width: 65%;
     /* width: auto; */
   }
 }

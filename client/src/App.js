@@ -28,6 +28,7 @@ function App() {
 
   const [gameResult, setGameResult] = useState(null);
   const [percentScore, setPercentScore] = useState(0);
+  const [roundedPercentScore, setRoundedPercentScore] = useState(0);
   
   const [colorOfTheDay, setColorOfTheDay] = useState([0, 0, 0])
   const [rgbColorOfTheDay, setRgbColorOfTheDay] = useState(`rgb(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]})`)
@@ -35,6 +36,7 @@ function App() {
   const [previousUserGuesses, setPreviousUserGuesses] = useState([])
   const contrastColor = useGetContrastColor(rgbColorOfTheDay)
   const [gameOverModalIsOpen, setGameOverModalIsOpen] = useState(false);
+  const [gameIsPosted, setGameIsPosted] = useState(false);
   const [instructionsModalIsOpen, setInstructionsModalIsOpen] = useState(true);
   
     // if (gameOverModalIsOpen) {
@@ -51,7 +53,7 @@ function App() {
     })
     if (response.ok) {
       const userData = await response.json()
-      console.log(userData)
+      // console.log(userData)
       setLoggedInUser(userData)
     }
   }
@@ -74,7 +76,7 @@ function App() {
     document.body.style.backgroundColor = `rgba(${colorOfTheDay[0]}, ${colorOfTheDay[1]}, ${colorOfTheDay[2]}, 0.25)`;
   }, [])
 
-  console.log(opaqueRgbColorOfTheDay)
+  // console.log(opaqueRgbColorOfTheDay)
   useEffect(() => {
       const firstNum = Math.floor(Math.random() * 256)
       const secondNum = Math.floor(Math.random() * 256)
@@ -113,8 +115,11 @@ function App() {
         }
       };
       const decimalScore = 1 - difference / total;
-      const newPercentScore = Math.round(decimalScore * 10000) / 100
-      setPercentScore(newPercentScore)
+      console.log("Non Rounded Percent Score", decimalScore * 100)
+      const accuratePercentScore = decimalScore * 100;
+      setPercentScore(accuratePercentScore);
+      const newRoundedPercentScore = Math.round(decimalScore * 10000) / 100;
+      setRoundedPercentScore(newRoundedPercentScore);
     }
   }, [previousUserGuesses])
   
@@ -123,12 +128,13 @@ function App() {
         rgb: `${colorOfTheDay}`,
         win: gameResult,
         guesses: previousUserGuesses.length,
-        percent_score: percentScore,
+        percent_score: gameResult ? 100 : percentScore,
         user_id: null
       }
       if (Object.keys(loggedInUser).length > 0) {
         gameResultsBody.user_id = loggedInUser.id
       }
+      console.log("Game Results Pre POST", gameResultsBody)
       try {
         const response = await fetch('https://shadle-back-end.onrender.com/games', {
           method: 'POST',
@@ -139,6 +145,7 @@ function App() {
         })
         if (response.ok) {
           const gameResultsResponseData = await response.json();
+          setGameIsPosted(true);
           console.log("Game Results Response Data: ", gameResultsResponseData);
         }
         else console.log("Game results error: !response.ok");
@@ -150,10 +157,10 @@ function App() {
     }
 
     useEffect(() => {
-      if (previousUserGuesses.length > 0) {
+      if (previousUserGuesses.length > 0 && gameResult !== null) {
         postGameResults();
       }
-    }, [gameResult]);
+    }, [percentScore]);
     
     const router = createBrowserRouter([
       {
@@ -193,7 +200,7 @@ function App() {
         closeInstructionsModal={closeInstructionsModal}      
         />
       <GameOverModal
-        percentScore={percentScore}
+        roundedPercentScore={roundedPercentScore}
         previousUserGuesses={previousUserGuesses}
         contrastColor={contrastColor}
         gameResult={gameResult}
@@ -201,7 +208,8 @@ function App() {
         rgbColorOfTheDay={rgbColorOfTheDay}
         opaqueRgbColorOfTheDay={opaqueRgbColorOfTheDay}
         gameOverModalIsOpen={gameOverModalIsOpen} 
-        closeGameOverModal={closeGameOverModal}      
+        closeGameOverModal={closeGameOverModal}
+        gameIsPosted={gameIsPosted}
       />
       <RouterProvider router={router} />
     </div>

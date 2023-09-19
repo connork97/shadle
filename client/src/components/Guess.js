@@ -20,7 +20,7 @@ const Guess = ({ postGameResults, setGameResult, colorOfTheDay, rgbColorOfTheDay
 
     const handleGuessSubmit = (event) => {
         event.preventDefault();
-        console.log("Color of the day", colorOfTheDay);
+        // console.log("Color of the day", colorOfTheDay);
         if (!JSON.stringify(previousUserGuesses).includes(JSON.stringify(currentUserGuess)) && previousUserGuesses.length < 6) {
             if (JSON.stringify(currentUserGuess) === JSON.stringify(colorOfTheDay)) {
                 setPreviousUserGuesses((prevGuesses) => {
@@ -29,7 +29,10 @@ const Guess = ({ postGameResults, setGameResult, colorOfTheDay, rgbColorOfTheDay
                 setGameResult(true);
                 // postGameResults();
                 openGameOverModal();
-            } else if (previousUserGuesses.length === 5) {
+            // } else if (previousUserGuesses.length > 1 && (previousUserGuesses[0][0] === previousUserGuesses[1][0] && previousUserGuesses[0][0] !== colorOfTheDay[0]) || (previousUserGuesses[0][1] === previousUserGuesses[1][1]  && previousUserGuesses[0][1] !== colorOfTheDay[1]) || (previousUserGuesses[0][2] === previousUserGuesses[1][2]  && previousUserGuesses[0][2] !== colorOfTheDay[2])) {
+                // window.confirm("It looks like you have the same incorrect value as your last guess for one or more of your answers. Are you sure you want to continue?")
+            } 
+            else if (previousUserGuesses.length === 5) {
                 setPreviousUserGuesses((prevGuesses) => {
                     return [currentUserGuess, ...prevGuesses]
                 });

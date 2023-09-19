@@ -46,6 +46,7 @@
     font-size: 100%;
     font-weight: bold;
 }
+
 .loadingSpinner {
     margin: auto;
     /* margin-top: 50%; */
@@ -70,6 +71,7 @@
         transform: rotate(360deg);
     }
   }
+  
 @media only screen and (max-width: 768px) {
     .statsWrapperDiv {
         flex-direction: column;
