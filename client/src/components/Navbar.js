@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css';
 
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 import { MdAccountCircle } from 'react-icons/md';

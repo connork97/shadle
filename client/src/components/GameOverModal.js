@@ -1,7 +1,4 @@
-import useGetContrastColor from '../utils/useGetContrastColor';
 import styles from './GameOverModal.module.css';
-
-import { useEffect } from 'react';
 
 const GameOverModal = ({ colorOfTheDay, gameIsPosted, roundedPercentScore, previousUserGuesses, contrastColor, gameResult, rgbColorOfTheDay, opaqueRgbColorOfTheDay, gameOverModalIsOpen, closeGameOverModal }) => {
     if (!gameOverModalIsOpen) return null;

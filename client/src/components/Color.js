@@ -1,8 +1,7 @@
 import styles from './Color.module.css';
 
-import React, { useRef, useState, useEffect } from 'react';
-import { useTransition, animated } from 'react-spring';
-import KUTE, { fromTo } from 'kute.js'
+import React, { useRef, useEffect } from 'react';
+
 const Color = ({ colorOfTheDay, rgbColorOfTheDay }) => {
 
     const colorDivRef = useRef(null)

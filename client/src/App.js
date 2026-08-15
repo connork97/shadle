@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React, { useState, useEffect } from 'react';
@@ -10,11 +9,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 
-import Account from './pages/Account';
 
-import Color from './components/Color';
-import Guess from './components/Guess';
-import PreviousGuesses from './components/PreviousGuesses';
 import GameOverModal from './components/GameOverModal';
 import InstructionsModal from './components/InstructionsModal';
 import useGetContrastColor from './utils/useGetContrastColor';

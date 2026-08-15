@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import styles from './PreviousGuesses.module.css';
 
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';

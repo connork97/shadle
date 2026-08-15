@@ -2,7 +2,6 @@ import styles from './Home.module.css';
 
 import { Fragment } from "react";
 
-import Navbar from '../components/Navbar';
 import Color from '../components/Color';
 import Guess from '../components/Guess';
 import PreviousGuesses from '../components/PreviousGuesses';

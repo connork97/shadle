@@ -1,4 +1,3 @@
-import { useRef, useEffect, useState } from 'react';
 import styles from './MenuDropdown.module.css';
 
 import { Link } from 'react-router-dom';

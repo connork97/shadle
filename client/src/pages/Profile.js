@@ -1,8 +1,6 @@
 import styles from './Profile.module.css';
 
-import { useState, useEffect, Fragment } from 'react';
-
-import Spinner from '../components/Spinner';
+import { useState, useEffect } from 'react';
 
 const Profile = ({ loggedInUser }) => {
 

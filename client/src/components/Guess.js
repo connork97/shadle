@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import styles from './Guess.module.css';
 
 import React, { useState } from 'react';
