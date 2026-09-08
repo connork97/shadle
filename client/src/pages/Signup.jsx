@@ -1,5 +1,5 @@
 import styles from './Signup.module.css';
-
+import { BASE_URL } from '../api/fetch';
 import React, { Fragment, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,8 @@ const Signup = ({ setLoggedInUser }) => {
         if (userSignupInfo.password === confirmPassword) {
             setSigningUp(true);
             try {
-                const response = await fetch('https://shadle-back-end.onrender.com/signup', {
+                // const response = await fetch('https://shadle-back-end.onrender.com/signup', {
+                const response = await fetch(`${BASE_URL}/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

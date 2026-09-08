@@ -1,6 +1,7 @@
 import styles from './Profile.module.css';
 
 import { useState, useEffect } from 'react';
+import { BASE_URL } from '../api/fetch';
 
 const Profile = ({ loggedInUser }) => {
 
@@ -12,7 +13,8 @@ const Profile = ({ loggedInUser }) => {
 
     const fetchLoggedInUserGames = async() => {
         try {
-            const response = await fetch(`https://shadle-back-end.onrender.com/games_by_user/${loggedInUser._id_hash}`)
+            // const response = await fetch(`https://shadle-back-end.onrender.com/games_by_user/${loggedInUser._id_hash}`)
+            const response = await fetch(`${BASE_URL}/games_by_user/${loggedInUser._id_hash}`)
             setStatsAreFetched(true);
             if (response.ok) {
                 const gameData = await response.json();

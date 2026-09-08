@@ -1,5 +1,5 @@
 import './App.css';
-
+import { BASE_URL } from './api/fetch';
 import React, { useState, useEffect } from 'react';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -39,7 +39,8 @@ function App() {
     // }
 
   const checkLoginStatus = async(idHash) => {
-    const response = await fetch(`https://shadle-back-end.onrender.com/check-session`, {
+    // const response = await fetch(`https://shadle-back-end.onrender.com/check-session`, {
+    const response = await fetch(`${BASE_URL}/check-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -131,7 +132,8 @@ function App() {
       }
       console.log("Game Results Pre POST", gameResultsBody)
       try {
-        const response = await fetch('https://shadle-back-end.onrender.com/games', {
+        // const response = await fetch('https://shadle-back-end.onrender.com/games', {
+        const response = await fetch(`${BASE_URL}/games`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

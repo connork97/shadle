@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import styles from './GlobalStats.module.css';
-
+import { BASE_URL } from '../api/fetch';
 import { useState, useEffect } from 'react';
 
 const GlobalStats = () => {
@@ -9,7 +9,8 @@ const GlobalStats = () => {
 
     const fetchGlobalStats = async() => {
         try {
-            const response = await fetch('https://shadle-back-end.onrender.com/global-stats')
+            // const response = await fetch('https://shadle-back-end.onrender.com/global-stats')
+            const response = await fetch(`${BASE_URL}/global-stats`)
             if (response.ok) {
                 const globalStatsData = await response.json();
                 console.log(globalStatsData);
