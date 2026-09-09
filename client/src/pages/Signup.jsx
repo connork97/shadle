@@ -39,6 +39,7 @@ const Signup = ({ setLoggedInUser }) => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    // credentials: 'include',
                     body: JSON.stringify(userSignupInfo),
                 })
                 if (response.ok) {
@@ -49,7 +50,9 @@ const Signup = ({ setLoggedInUser }) => {
                     navigate('/profile')
                 }
                 else {
-                    window.alert("Sorry! This email is already taken.  Try a different one.")
+                    // window.alert("Sorry! This email is already taken.  Try a different one.")
+                    // throw new Error("Signup failed: Email already taken.")
+                    throw new Error();
                 }
             }
             catch (error) {
